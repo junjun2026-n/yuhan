@@ -1,6 +1,10 @@
-# WAF Web 应用防火墙
+# yuhan Web 应用防火墙
 
-???**v0.261115** ? ???????? ? [GPLv3 ??](LICENSE) ? [????](COPYRIGHT.md)
+版本：**v0.261115** · 版权归本人所有 · [GPLv3 完整许可](LICENSE) · [版权说明](COPYRIGHT.md)
+
+项目名称与目录：`yuhan`。GitHub 仓库：[junjun2026-n/yuhan](https://github.com/junjun2026-n/yuhan)。
+
+Python 模块名仍为 `waf`，下方启动命令按该模块名执行。
 
 安全总览支持九类 TOP5（含黑名单来源 IP、攻击类型）、时间范围筛选，以及点击汇总数字/排名项打开审计列表。国家归属使用内置 DB-IP Lite 离线索引，支持 IPv4/IPv6；历史域名缺失显示“未记录”。详见使用手册“安全总览统计与记录下钻”。
 
@@ -17,7 +21,7 @@ FastAPI / HTTPX 提供管理与代理，支持 SQLite / PostgreSQL 持久化全�
 部署入口：先填写 `mgrnic.ini` 的实际管理网卡，再在 Ubuntu 项目目录执行 `bash start.sh`。
 详细安装、接线、权限、持久化和维护说明见 [Ubuntu Docker 部署文档](docs/UBUNTU_DOCKER.md)。
 
-开发目录 `C:\20260501\qionghai\WAF` 和 Windows `.venv` 保留用于本地开发与测试。以下 PowerShell 启动方式属于开发方式。
+开发目录 `C:\20260501\qionghai\yuhan` 和 Windows `.venv` 保留用于本地开发与测试。以下 PowerShell 启动方式属于开发方式。
 
 推荐使用 `start-dev.ps1` 启动独立开发环境（8400/8401，独立 PostgreSQL 开发库和账号配置），开发完成可执行 `deploy.ps1` 测试、上传并更新服务器 Docker。当前版本在本机运行，详见 [本地开发与更新说明](docs/DEVELOPMENT_DEPLOYMENT.md)。
 
@@ -26,7 +30,7 @@ FastAPI / HTTPX 提供管理与代理，支持 SQLite / PostgreSQL 持久化全�
 在 PowerShell 中执行：
 
 ```powershell
-cd C:\20260501\qionghai\WAF
+cd C:\20260501\qionghai\yuhan
 .\.venv\Scripts\python.exe -m waf.cli init
 .\start.ps1
 ```
