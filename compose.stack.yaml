@@ -1,0 +1,57 @@
+name: qionghai-waf-stack
+services:
+  waf:
+    extends:
+      file: compose.yaml
+      service: waf
+    environment:
+      WAF_DB_ENGINE: postgresql
+      # WAF shares host networking; the DB is published on loopback only.
+      WAF_DB_HOST: 127.0.0.1
+      WAF_DB_PORT: ${WAF_STACK_DB_PORT:-55432}
+      WAF_DB_NAME: waf
+      WAF_DB_USER: wafuser
+      WAF_DB_SSLMODE: disable
+    command: ["python", "-m", "waf.stack_start"]
+    volumes:
+      - type: bind
+        source: ./runtime-stack
+        target: /app/runtime
+        bind:
+          create_host_path: false
+    secrets:
+      - postgres_password
+    depends_on:
+      database:
+        condition: service_healthy
+  database:
+    image: ${WAF_POSTGRES_IMAGE:-postgres:18-alpine}
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: waf
+      POSTGRES_USER: wafuser
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:${WAF_STACK_DB_PORT:-55432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    secrets:
+      - postgres_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wafuser -d waf"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    stop_grace_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+secrets:
+  postgres_password:
+    file: ./.stack-secrets/postgres-password
+volumes:
+  postgres_data:

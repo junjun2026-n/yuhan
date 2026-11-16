@@ -1,0 +1,14 @@
+.venv
+.env
+.env.*
+runtime
+runtime-stack
+.stack-secrets
+packages
+.pytest_cache
+**/__pycache__
+**/*.pyc
+.git
+tests
+*.ps1
+*.log

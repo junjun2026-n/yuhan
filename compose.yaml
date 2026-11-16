@@ -1,0 +1,50 @@
+name: qionghai-waf
+services:
+  waf:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UBUNTU_IMAGE: ${WAF_UBUNTU_IMAGE:-ubuntu:24.04}
+    image: qionghai-waf:ubuntu24.04
+    restart: unless-stopped
+    hostname: ${WAF_HOSTNAME:-waf}
+    init: true
+    # Management AND business NICs share Ubuntu's network namespace. mgrnic.ini
+    # maps their stable physical identities to WAF aliases; no /dev NIC mapping.
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    environment:
+      TZ: Asia/Shanghai
+      WAF_ENV_FILE: /app/runtime/admin.env
+      WAF_DATABASE: /app/runtime/waf.sqlite3
+      WAF_DATAPLANE_AUTOSTART: "1"
+    volumes:
+      - type: bind
+        source: ./runtime
+        target: /app/runtime
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./mgrnic.ini
+        target: /app/mgrnic.ini
+        read_only: true
+        bind:
+          create_host_path: false
+    stop_grace_period: 90s
+    healthcheck:
+      test: ["CMD", "python", "-m", "waf.healthcheck"]
+      interval: 30s
+      timeout: 10s
+      start_period: 45s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
