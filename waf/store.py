@@ -4,7 +4,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
-DEFAULTS = {'upstream': '', 'domain_upstreams': {}, 'origin_rules': [], 'mode': 'block', 'enabled': True, 'rate_limit': 120,
+DEFAULTS = {'upstream': '', 'honeypot_enabled': False, 'honeypot_url': '', 'domain_upstreams': {}, 'origin_rules': [], 'mode': 'block', 'enabled': True, 'rate_limit': 120,
             'max_body_bytes': 1048576, 'disabled_rules': [], 'protected_domains': [],
             'tls_enabled': False, 'tls_port': 8443, 'tls_certificate': '', 'domain_certificates': {}, 'custom_rules': []}
 

@@ -36,6 +36,10 @@ async function load() {
   renderOriginRules(settings.origin_rules||[]);
   $('tls_enabled').checked=settings.tls_enabled;
   $('enabled').checked=settings.enabled;
+  $('honeypot_enabled').checked=!!settings.honeypot_enabled;
+  $('honeypot_url').value=settings.honeypot_url||'';
+  $('honeypot_url').disabled=!settings.honeypot_enabled;
+  $('honeypot_url').required=!!settings.honeypot_enabled;
   $('protection-status').textContent=`当前模式：${settings.mode==='block'?'拦截':'观察'} · 特征检测：${settings.enabled?'启用':'关闭'} · ${settings.upstream||Object.keys(settings.domain_upstreams||{}).length||settings.origin_rules?.length?'源站已配置':'等待配置源站'}`;
   }
   if(settings){
@@ -47,9 +51,12 @@ async function load() {
 async function save(value){
   if(!$('settings').hidden){
     value.origin_rules=readOriginRules();
+    value.honeypot_enabled=$('honeypot_enabled').checked;
+    value.honeypot_url=$('honeypot_url').value.trim();
   }
   await api('/api/settings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(value)});await load();message('配置已保存，域名和防护策略已生效；启用 HTTPS 后请刷新 HTTPS 状态确认入口运行。');}
 function run(fn){return async e=>{try{await fn(e);}catch(error){message(error.message,true);}};}
+$('honeypot_enabled').addEventListener('change',()=>{const enabled=$('honeypot_enabled').checked;$('honeypot_url').disabled=!enabled;$('honeypot_url').required=enabled;});
 $('logout').addEventListener('click',run(async()=>{
   $('logout').disabled=true;
   try{

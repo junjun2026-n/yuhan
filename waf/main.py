@@ -67,6 +67,8 @@ class OriginRuleInput(BaseModel):
 
 class SettingsInput(BaseModel):
     upstream: str = ''
+    honeypot_enabled: bool = False
+    honeypot_url: str = Field(default='', max_length=2048)
     mode: str = 'block'
     enabled: bool = True
     rate_limit: int = Field(default=120, ge=1, le=100000)
@@ -98,6 +100,8 @@ class SettingsInput(BaseModel):
 
     @model_validator(mode='after')
     def bound_domains(self):
+        if self.honeypot_enabled and not self.honeypot_url:
+            raise ValueError('启用蜜罐时必须填写蜜罐地址')
         if set(self.domain_upstreams) - set(self.protected_domains):
             raise ValueError('请先将源站绑定域名加入受保护域名')
         if set(rule.domain for rule in self.origin_rules) - set(self.protected_domains):
@@ -135,7 +139,7 @@ class SettingsInput(BaseModel):
         if value not in ('block', 'monitor'): raise ValueError('模式必须为 block 或 monitor')
         return value
 
-    @field_validator('upstream')
+    @field_validator('upstream', 'honeypot_url')
     @classmethod
     def valid_upstream(cls, value):
         return normalize_origin(value)
@@ -328,7 +332,7 @@ def create_app(plane='proxy', database=None, transport=None):
                 raise HTTPException(403,'没有修改系统防护规则的权限')
             try:
                 validate_https(value.model_dump())
-                origins = ([value.upstream] if value.upstream else []) + [origin for pool in value.domain_upstreams.values() for origin in pool] + [origin for rule in value.origin_rules for origin in rule.origins]
+                origins = ([value.upstream] if value.upstream else []) + ([value.honeypot_url] if value.honeypot_url else []) + [origin for pool in value.domain_upstreams.values() for origin in pool] + [origin for rule in value.origin_rules for origin in rule.origins]
                 for address in origins if value.tls_enabled else []:
                     from ipaddress import IPv4Interface
                     origin = urlsplit(address)
@@ -552,7 +556,15 @@ def create_app(plane='proxy', database=None, transport=None):
             await asyncio.to_thread(store.event, request_id, ip, request.method, request.url.path, action, rule, status,request_hostname(request.headers),
                                     dict(src_ip=ip,src_port=request.client.port if request.client else 0,
                                          dst_ip=listener[0],dst_port=listener[1],protocol='TCP'))
-        async def reject(status, rule, message):
+        async def reject(status, rule, message, divert=False):
+            if divert and settings.get('honeypot_enabled') and settings.get('honeypot_url'):
+                from .honeypot import forward
+                response = await forward(app.state.client, request, bytes(body), settings['honeypot_url'], ip, request_id, rule)
+                await audit('blocked', rule + (':HONEYPOT' if response is not None else ':HONEYPOT_FAILED'), status)
+                if response is not None:
+                    return response
+                return JSONResponse({'detail':message, 'request_id':request_id}, status_code=status,
+                                    headers={'X-WAF-Request-ID':request_id})
             await audit('blocked', rule, status)
             return JSONResponse({'detail':message, 'request_id':request_id}, status_code=status,
                                 headers={'X-WAF-Request-ID':request_id})
@@ -567,14 +579,14 @@ def create_app(plane='proxy', database=None, transport=None):
             body.extend(chunk)
             if len(body) > settings['max_body_bytes']: return await reject(413, 'BODY', '请求体超过限制')
         custom=evaluate_custom(settings.get('custom_rules',[]),ip,request_hostname(request.headers),request.method,request.url.path,request.url.query)
-        if custom and custom['action']=='block': return await reject(403,custom['id'],'请求被自定义防护规则拦截')
+        if custom and custom['action']=='block': return await reject(403,custom['id'],'请求被自定义防护规则拦截', divert=True)
         rule = custom['id'] if custom and custom['action']=='monitor' else ''
         allowed_custom=custom and custom['action']=='allow'
         if settings['enabled'] and not allowed_custom:
             parts = [request.url.path, request.url.query, body.decode('utf-8', 'replace')]
             parts.extend(value for key, value in request.headers.items() if key.lower() not in ('authorization','cookie'))
             signature = inspect(parts, settings['disabled_rules'])
-            if signature and settings['mode']=='block': return await reject(403, signature, '请求被 WAF 安全规则拦截')
+            if signature and settings['mode']=='block': return await reject(403, signature, '请求被 WAF 安全规则拦截', divert=True)
             if signature: rule=signature
         raw_host = request.headers.get('host', '')
         request_port = int(raw_host.rsplit(':', 1)[1]) if ':' in raw_host and raw_host.rsplit(':', 1)[1].isdigit() else (443 if request.url.scheme == 'https' else 80)

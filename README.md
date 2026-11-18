@@ -1,5 +1,7 @@
 # yuhan Web 应用防火墙
 
+支持配置独立蜜罐地址，将代理入口命中的攻击请求转送蜜罐并保留拦截审计，详见[蜜罐配置](docs/HONEYPOT.md)。
+
 版本：**v0.261115** · 版权归本人所有 · [GPLv3 完整许可](LICENSE) · [版权说明](COPYRIGHT.md)
 
 项目名称与目录：`yuhan`。GitHub 仓库：[junjun2026-n/yuhan](https://github.com/junjun2026-n/yuhan)。

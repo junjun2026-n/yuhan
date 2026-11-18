@@ -82,6 +82,12 @@
 <label>默认源站地址（可选）<input id="upstream" type="url" placeholder="http://127.0.0.1:8000">
 <small>未填写独立源站的域名使用此地址；两处均为空时返回 503。地址不包含路径。新增、删除上方受保护域名会同步更新源站及证书配置行。</small>
 </label>
+<h3>蜜罐配置</h3>
+<div class="form-grid">
+<label class="check"><input id="honeypot_enabled" type="checkbox">启用蜜罐转送</label>
+<label>蜜罐地址<input id="honeypot_url" type="url" placeholder="http://192.168.1.100:8080"><small>HTTP/HTTPS 地址，不包含路径；请使用独立隔离的蜜罐服务。</small></label>
+</div>
+<p class="muted">仅转送攻击特征及自定义拦截规则命中的请求，保留请求路径、查询和正文，不转送 Cookie 和认证头。蜜罐故障时继续拦截；限流、非法域名、超大请求和业务端口策略不转送。镜像旁挂与透明串联不使用此代理功能。</p>
 <div class="form-grid">
 <label>检测模式<select id="mode">
 <option value="block">拦截：阻止命中规则的请求</option>
