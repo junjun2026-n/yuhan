@@ -1,13 +1,13 @@
 # 本地开发与 Docker 更新
 
-本地项目保留在 `C:\20260501\qionghai\WAF`，Python 虚拟环境为项目内 `.venv`。服务器正式环境位于 `192.168.17.126:/opt/waf`，PostgreSQL 位于 `192.168.17.127:5432/waf`。
+本地项目保留在 `C:\20260501\qionghai\yuhan`，Python 虚拟环境为项目内 `.venv`。服务器正式环境位于 `192.168.17.126:/opt/waf`，PostgreSQL 位于 `192.168.17.127:5432/waf`。
 
 ## 本地开发
 
 首次安装或更新依赖：
 
 ```powershell
-cd C:\20260501\qionghai\WAF
+cd C:\20260501\qionghai\yuhan
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-deploy.txt
 .\start-dev.ps1
 ```

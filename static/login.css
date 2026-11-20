@@ -1,1 +1,14 @@
+/*
+============================================================
+文件名称：login.css
+生成日期：2026-11-15
+修改日期：2026-11-20
+版本信息：v0.261115
+作    者：JUN
+备    注：本程序由AI辅助完成。
+          文件功能：定义 login 界面样式和布局。
+          文件用途：供WAF的 yuhan/static/login.css 模块使用。
+          注意事项：运行前检查依赖与配置；涉及数据或服务变更时先备份并验证。
+============================================================
+*/
 :root{font-family:"Segoe UI","Microsoft YaHei",sans-serif;color:#182c43;background:#f3f6fa}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}main{width:100%;max-width:410px;background:#fff;border:1px solid #e2e8ef;border-radius:16px;padding:38px;box-shadow:0 12px 40px #13283f0b}.mark{display:inline-block;background:#36c8ab;color:#102a3f;font-size:28px;font-weight:700;border-radius:9px;padding:7px 14px}h1{font-size:24px;margin-bottom:8px}p{font-size:14px;color:#738499;line-height:1.6}label{display:block;margin-top:22px;font-size:14px;font-weight:600}input,button{font:inherit;width:100%;padding:12px;border-radius:7px}input{margin-top:8px;border:1px solid #d5dfe9}input:focus{outline:2px solid #92d7ce}button{margin-top:28px;background:#167f72;color:#fff;border:0;cursor:pointer;font-weight:600}button:disabled{opacity:.55}#login-message{min-height:23px;color:#bf3636}

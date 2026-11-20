@@ -1,3 +1,14 @@
+// ============================================================
+// 文件名称：app.js
+// 生成日期：2026-10-27
+// 修改日期：2026-11-20
+// 版本信息：v0.261115
+// 作    者：JUN
+// 备    注：本程序由AI辅助完成。
+//           文件功能：组织应用界面或应用服务逻辑。
+//           文件用途：供WAF的 yuhan/static/app.js 模块使用。
+//           注意事项：运行前检查依赖与配置；涉及数据或服务变更时先备份并验证。
+// ============================================================
 'use strict';
 const $ = id => document.getElementById(id);
 let config = null, page = 1, eventPages = 0, eventRequest = 0, certificates = [];
@@ -240,6 +251,7 @@ $('certificate-form').addEventListener('submit',run(async e=>{
 document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',run(async()=>{if(button.hidden)return;document.querySelectorAll('main section').forEach(s=>s.hidden=s.id!==button.dataset.tab);document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===button));$('title').textContent=button.textContent;message('');if(button.dataset.tab==='system')await loadSystem();if(button.dataset.tab==='rules')await loadCustomRules();if(button.dataset.tab==='users')await loadUsers();})));
 $('refresh').addEventListener('click',run(async()=>{await load();if(!$('system').hidden)await loadSystem();message('数据已刷新。');}));
 $('settings-form').addEventListener('submit',run(async e=>{e.preventDefault();await save({...config,upstream:$('upstream').value.trim(),domain_upstreams:readDomainUpstreams(),mode:$('mode').value,enabled:$('enabled').checked,rate_limit:Number($('rate_limit').value),max_body_bytes:Number($('max_body_bytes').value),protected_domains:$('protected_domains').value.split(/[\n,，]/).map(x=>x.trim()).filter(Boolean),tls_enabled:$('tls_enabled').checked,tls_port:Number($('tls_port').value),tls_certificate:'',domain_certificates:readDomainCertificates()});}));
+$('honeypot-form').addEventListener('submit',run(async e=>{e.preventDefault();await api('/api/settings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({...config,honeypot_enabled:$('honeypot_enabled').checked,honeypot_url:$('honeypot_url').value.trim()})});await load();message('蜜罐配置已保存。');}));
 $('save-rules').addEventListener('click',run(async()=>{await save({...config,disabled_rules:[...document.querySelectorAll('[data-rule]')].filter(c=>!c.checked).map(c=>c.dataset.rule)});}));
 $('action').addEventListener('change',run(async()=>{page=1;await loadEvents();}));
 $('event-page-size').addEventListener('change',run(async()=>{page=1;await loadEvents();}));

@@ -324,10 +324,10 @@ SQLite 使用备份 API 或停止服务后复制整个 runtime，运行中不要
 
 ### 10.3 本地开发与服务器更新
 
-保留 `C:\20260501\qionghai\WAF` 和项目 `.venv`。启动开发及发布：
+保留 `C:\20260501\qionghai\yuhan` 和项目 `.venv`。启动开发及发布：
 
 ```powershell
-cd C:\20260501\qionghai\WAF
+cd C:\20260501\qionghai\yuhan
 .\start-dev.ps1
 # 开发验证完成后在另一终端发布
 .\deploy.ps1

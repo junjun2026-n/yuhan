@@ -1,9 +1,22 @@
 <!doctype html>
+<!--
+============================================================
+文件名称：index.html
+生成日期：2026-10-27
+修改日期：2026-11-20
+版本信息：v0.261115
+作    者：JUN
+备    注：本程序由AI辅助完成。
+          文件功能：定义 index 页面结构或界面资源。
+          文件用途：供WAF的 yuhan/static/index.html 模块使用。
+          注意事项：运行前检查依赖与配置；涉及数据或服务变更时先备份并验证。
+============================================================
+-->
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WAF · 安全控制台</title>
+<title>WAF 路 瀹夊叏鎺у埗鍙?/title>
 <link rel="stylesheet" href="/app.css">
 <script src="/app.js" defer>
 </script>
@@ -12,201 +25,205 @@
 <body>
 <aside>
 <div class="brand">
-<b>W</b> <span id="platform-brand">WAF</span> <small>安全控制台</small>
+<b>W</b> <span id="platform-brand">WAF</span> <small>瀹夊叏鎺у埗鍙?/small>
 </div>
 <nav>
-<button data-tab="overview" class="active">安全总览</button>
-<button data-tab="settings">站点配置</button>
-<button data-tab="rules">防护规则</button>
-<button data-tab="events">访问审计</button>
-<button data-tab="system">系统配置</button>
-<button data-tab="users">用户管理</button>
-<button data-tab="password">修改密码</button>
+<button data-tab="overview" class="active">瀹夊叏鎬昏</button>
+<button data-tab="settings">绔欑偣閰嶇疆</button>
+<button data-tab="rules">闃叉姢瑙勫垯</button>
+<button data-tab="events">璁块棶瀹¤</button>
+<button data-tab="system">绯荤粺閰嶇疆</button>
+<button data-tab="users">鐢ㄦ埛绠＄悊</button>
+<button data-tab="password">淇敼瀵嗙爜</button>
 </nav>
-<div class="aside-note">WEB APPLICATION FIREWALL<br>独立防护 · 本地管理</div>
+<div class="aside-note">WEB APPLICATION FIREWALL<br>鐙珛闃叉姢 路 鏈湴绠＄悊</div>
 </aside>
 <main>
 <header>
 <div>
 <p class="eyebrow">APPLICATION SECURITY</p>
-<h1 id="title">安全总览</h1>
+<h1 id="title">瀹夊叏鎬昏</h1>
 </div>
-<div class="toolbar header-actions"><button id="refresh" class="secondary">刷新数据</button><button id="open-traffic-map" type="button" hidden>大屏展示</button><button id="logout" type="button" class="secondary">退出登录</button></div>
+<div class="toolbar header-actions"><button id="refresh" class="secondary">鍒锋柊鏁版嵁</button><button id="open-traffic-map" type="button" hidden>澶у睆灞曠ず</button><button id="logout" type="button" class="secondary">閫€鍑虹櫥褰?/button></div>
 </header>
 <p id="message" role="status">
 </p>
 <section id="overview">
 <div class="hero">
-<h2>为 Web 应用建立一道安全边界</h2>
-<p>集中查看访问情况、管理防护策略，并追踪被拦截的请求。</p>
+<h2>涓?Web 搴旂敤寤虹珛涓€閬撳畨鍏ㄨ竟鐣?/h2>
+<p>闆嗕腑鏌ョ湅璁块棶鎯呭喌銆佺鐞嗛槻鎶ょ瓥鐣ワ紝骞惰拷韪鎷︽埅鐨勮姹傘€?/p>
 <p id="protection-status">
 </p>
 </div>
 <div class="metrics" id="metrics">
 </div>
 <div class="panel overview-controls">
-<div class="toolbar"><label class="inline-field" for="overview-period">统计范围<select id="overview-period"><option value="all">全部留存记录</option><option value="24h">最近 24 小时</option><option value="7d">最近 7 天</option><option value="30d">最近 30 天</option></select></label></div>
+<div class="toolbar"><label class="inline-field" for="overview-period">缁熻鑼冨洿<select id="overview-period"><option value="all">鍏ㄩ儴鐣欏瓨璁板綍</option><option value="24h">鏈€杩?24 灏忔椂</option><option value="7d">鏈€杩?7 澶?/option><option value="30d">鏈€杩?30 澶?/option></select></label></div>
 <p id="overview-summary" class="muted"></p>
-<small>国家归属来自离线 <a href="https://db-ip.com" target="_blank" rel="noopener noreferrer">IP Geolocation by DB-IP</a>（CC BY 4.0），表示 IP 登记归属，不能确定访问者实际位置。外部 IP 指可公网路由的来源 IP；不信任客户端自行填写的 X-Forwarded-For。</small>
+<small>鍥藉褰掑睘鏉ヨ嚜绂荤嚎 <a href="https://db-ip.com" target="_blank" rel="noopener noreferrer">IP Geolocation by DB-IP</a>锛圕C BY 4.0锛夛紝琛ㄧず IP 鐧昏褰掑睘锛屼笉鑳界‘瀹氳闂€呭疄闄呬綅缃€傚閮?IP 鎸囧彲鍏綉璺敱鐨勬潵婧?IP锛涗笉淇′换瀹㈡埛绔嚜琛屽～鍐欑殑 X-Forwarded-For銆?/small>
 </div>
 <div class="overview-rankings" id="overview-rankings"></div>
 <div class="panel">
-<h2>接入指引</h2>
+<h2>鎺ュ叆鎸囧紩</h2>
 <ol>
-<li>在「站点配置」填写被保护应用的 HTTP / HTTPS 源站地址。</li>
-<li>先使用观察模式验证正常业务，再切换为拦截模式。</li>
-<li>将用户访问入口指向 WAF 的 8300 端口，并限制用户直接访问源站。</li>
+<li>鍦ㄣ€岀珯鐐归厤缃€嶅～鍐欒淇濇姢搴旂敤鐨?HTTP / HTTPS 婧愮珯鍦板潃銆?/li>
+<li>鍏堜娇鐢ㄨ瀵熸ā寮忛獙璇佹甯镐笟鍔★紝鍐嶅垏鎹负鎷︽埅妯″紡銆?/li>
+<li>灏嗙敤鎴疯闂叆鍙ｆ寚鍚?WAF 鐨?8300 绔彛锛屽苟闄愬埗鐢ㄦ埛鐩存帴璁块棶婧愮珯銆?/li>
 </ol>
-<p class="muted">这是基础版本，生产接入前需完成规则调优、TLS 配置和压力测试。</p>
+<p class="muted">杩欐槸鍩虹鐗堟湰锛岀敓浜ф帴鍏ュ墠闇€瀹屾垚瑙勫垯璋冧紭銆乀LS 閰嶇疆鍜屽帇鍔涙祴璇曘€?/p>
 </div>
 </section>
 <section id="settings" hidden>
-<div class="system-tabs" role="tablist" aria-label="站点配置功能">
-<button id="tab-site-settings" type="button" role="tab" data-site-tab="settings" aria-controls="settings-form" aria-selected="true">站点配置</button>
-<button id="tab-site-certificates" type="button" role="tab" data-site-tab="certificates" aria-controls="certificate-form" aria-selected="false" tabindex="-1">HTTPS 证书库</button>
+<div class="system-tabs" role="tablist" aria-label="绔欑偣閰嶇疆鍔熻兘">
+<button id="tab-site-settings" type="button" role="tab" data-site-tab="settings" aria-controls="settings-form" aria-selected="true">绔欑偣閰嶇疆</button>
+<button id="tab-site-certificates" type="button" role="tab" data-site-tab="certificates" aria-controls="certificate-form" aria-selected="false" tabindex="-1">HTTPS 璇佷功搴?/button>
+<button id="tab-site-honeypot" type="button" role="tab" data-site-tab="honeypot" aria-controls="honeypot-form" aria-selected="false" tabindex="-1">铚滅綈閰嶇疆</button>
 </div>
 <form id="settings-form" class="panel site-sheet" role="tabpanel" aria-labelledby="tab-site-settings">
-<h2>被保护站点</h2>
-<label>受保护域名（每行一个）<textarea id="protected_domains" rows="4" placeholder="www.example.com&#10;*.example.org"></textarea>
-<small>支持完整域名及单层通配符。填写后拒绝其他域名和直接 IP 访问，源站接收原始域名；留空则保留原有任意 Host 接入。</small></label>
-<h3>证书加载</h3>
-<div class="table-wrap"><table><thead><tr><th>已配置域名</th><th>加载 HTTPS 证书</th></tr></thead><tbody id="domain-certificate-list"></tbody></table></div>
-<p class="muted">先在“HTTPS 证书库”页签上传证书，再按已配置的域名选择对应证书。列表仅提供有效且覆盖该域名的证书。启用 HTTPS 并保存后加载，通过 SNI 选择证书，完成 TLS 解密卸载及 WAF 检测。</p>
-<h3>域名与后端源站</h3>
-<div class="table-wrap"><table><thead><tr><th>受保护域名</th><th>后端源站（每行一个，最多 16 个）</th></tr></thead><tbody id="domain-upstream-list"></tbody></table></div>
-<p class="muted">每个域名可配置独立的 HTTP / HTTPS 源站池，多个源站轮询转发；精确域名优先于通配符。GET / HEAD / OPTIONS 连接建立失败时切换下一源站，其他请求不重试。源站保留访问域名 Host。</p>
-<h3>复杂匹配规则</h3>
+<h2>琚繚鎶ょ珯鐐?/h2>
+<label>鍙椾繚鎶ゅ煙鍚嶏紙姣忚涓€涓級<textarea id="protected_domains" rows="4" placeholder="www.example.com&#10;*.example.org"></textarea>
+<small>鏀寔瀹屾暣鍩熷悕鍙婂崟灞傞€氶厤绗︺€傚～鍐欏悗鎷掔粷鍏朵粬鍩熷悕鍜岀洿鎺?IP 璁块棶锛屾簮绔欐帴鏀跺師濮嬪煙鍚嶏紱鐣欑┖鍒欎繚鐣欏師鏈変换鎰?Host 鎺ュ叆銆?/small></label>
+<h3>璇佷功鍔犺浇</h3>
+<div class="table-wrap"><table><thead><tr><th>宸查厤缃煙鍚?/th><th>鍔犺浇 HTTPS 璇佷功</th></tr></thead><tbody id="domain-certificate-list"></tbody></table></div>
+<p class="muted">鍏堝湪鈥淗TTPS 璇佷功搴撯€濋〉绛句笂浼犺瘉涔︼紝鍐嶆寜宸查厤缃殑鍩熷悕閫夋嫨瀵瑰簲璇佷功銆傚垪琛ㄤ粎鎻愪緵鏈夋晥涓旇鐩栬鍩熷悕鐨勮瘉涔︺€傚惎鐢?HTTPS 骞朵繚瀛樺悗鍔犺浇锛岄€氳繃 SNI 閫夋嫨璇佷功锛屽畬鎴?TLS 瑙ｅ瘑鍗歌浇鍙?WAF 妫€娴嬨€?/p>
+<h3>鍩熷悕涓庡悗绔簮绔?/h3>
+<div class="table-wrap"><table><thead><tr><th>鍙椾繚鎶ゅ煙鍚?/th><th>鍚庣婧愮珯锛堟瘡琛屼竴涓紝鏈€澶?16 涓級</th></tr></thead><tbody id="domain-upstream-list"></tbody></table></div>
+<p class="muted">姣忎釜鍩熷悕鍙厤缃嫭绔嬬殑 HTTP / HTTPS 婧愮珯姹狅紝澶氫釜婧愮珯杞杞彂锛涚簿纭煙鍚嶄紭鍏堜簬閫氶厤绗︺€侴ET / HEAD / OPTIONS 杩炴帴寤虹珛澶辫触鏃跺垏鎹笅涓€婧愮珯锛屽叾浠栬姹備笉閲嶈瘯銆傛簮绔欎繚鐣欒闂煙鍚?Host銆?/p>
+<h3>澶嶆潅鍖归厤瑙勫垯</h3>
 <div id="origin-rule-list"></div>
-<button id="add-origin-rule" type="button" class="secondary">新增匹配规则</button>
-<p class="muted">每条规则组合匹配域名、访问端口及路径，可配置多个后端。优先级数值越大越优先；同优先级精确域名优先，再按最长路径匹配。端口留空表示任意端口；无规则命中时使用域名源站池及默认源站。</p>
-<label>默认源站地址（可选）<input id="upstream" type="url" placeholder="http://127.0.0.1:8000">
-<small>未填写独立源站的域名使用此地址；两处均为空时返回 503。地址不包含路径。新增、删除上方受保护域名会同步更新源站及证书配置行。</small>
+<button id="add-origin-rule" type="button" class="secondary">鏂板鍖归厤瑙勫垯</button>
+<p class="muted">姣忔潯瑙勫垯缁勫悎鍖归厤鍩熷悕銆佽闂鍙ｅ強璺緞锛屽彲閰嶇疆澶氫釜鍚庣銆備紭鍏堢骇鏁板€艰秺澶ц秺浼樺厛锛涘悓浼樺厛绾х簿纭煙鍚嶄紭鍏堬紝鍐嶆寜鏈€闀胯矾寰勫尮閰嶃€傜鍙ｇ暀绌鸿〃绀轰换鎰忕鍙ｏ紱鏃犺鍒欏懡涓椂浣跨敤鍩熷悕婧愮珯姹犲強榛樿婧愮珯銆?/p>
+<label>榛樿婧愮珯鍦板潃锛堝彲閫夛級<input id="upstream" type="url" placeholder="http://127.0.0.1:8000">
+<small>鏈～鍐欑嫭绔嬫簮绔欑殑鍩熷悕浣跨敤姝ゅ湴鍧€锛涗袱澶勫潎涓虹┖鏃惰繑鍥?503銆傚湴鍧€涓嶅寘鍚矾寰勩€傛柊澧炪€佸垹闄や笂鏂瑰彈淇濇姢鍩熷悕浼氬悓姝ユ洿鏂版簮绔欏強璇佷功閰嶇疆琛屻€?/small>
 </label>
-<h3>蜜罐配置</h3>
 <div class="form-grid">
-<label class="check"><input id="honeypot_enabled" type="checkbox">启用蜜罐转送</label>
-<label>蜜罐地址<input id="honeypot_url" type="url" placeholder="http://192.168.1.100:8080"><small>HTTP/HTTPS 地址，不包含路径；请使用独立隔离的蜜罐服务。</small></label>
-</div>
-<p class="muted">仅转送攻击特征及自定义拦截规则命中的请求，保留请求路径、查询和正文，不转送 Cookie 和认证头。蜜罐故障时继续拦截；限流、非法域名、超大请求和业务端口策略不转送。镜像旁挂与透明串联不使用此代理功能。</p>
-<div class="form-grid">
-<label>检测模式<select id="mode">
-<option value="block">拦截：阻止命中规则的请求</option>
-<option value="monitor">观察：记录命中并继续转发</option>
+<label>妫€娴嬫ā寮?select id="mode">
+<option value="block">鎷︽埅锛氶樆姝㈠懡涓鍒欑殑璇锋眰</option>
+<option value="monitor">瑙傚療锛氳褰曞懡涓苟缁х画杞彂</option>
 </select>
 </label>
-<label>每 IP 每分钟请求数<input id="rate_limit" type="number" min="1" max="100000" required>
+<label>姣?IP 姣忓垎閽熻姹傛暟<input id="rate_limit" type="number" min="1" max="100000" required>
 </label>
-<label>最大请求体（字节）<input id="max_body_bytes" type="number" min="1024" max="10485760" required>
+<label>鏈€澶ц姹備綋锛堝瓧鑺傦級<input id="max_body_bytes" type="number" min="1024" max="10485760" required>
 </label>
 </div>
 <label class="check">
-<input id="enabled" type="checkbox">启用攻击特征检测</label>
+<input id="enabled" type="checkbox">鍚敤鏀诲嚮鐗瑰緛妫€娴?/label>
 <div class="form-grid">
-<label class="check"><input id="tls_enabled" type="checkbox">启用 HTTPS 防护入口</label>
-<label>HTTPS 端口<input id="tls_port" type="number" min="1" max="65535" value="8443" required><small>默认 8443，可设为未被占用的 443。HTTP 8300 保留。</small></label>
+<label class="check"><input id="tls_enabled" type="checkbox">鍚敤 HTTPS 闃叉姢鍏ュ彛</label>
+<label>HTTPS 绔彛<input id="tls_port" type="number" min="1" max="65535" value="8443" required><small>榛樿 8443锛屽彲璁句负鏈鍗犵敤鐨?443銆侶TTP 8300 淇濈暀銆?/small></label>
 </div>
-<p class="muted">请求频率、请求体大小和方法限制始终生效。HTTPS 源站默认验证证书。</p>
-<button type="submit">保存站点配置</button>
+<p class="muted">璇锋眰棰戠巼銆佽姹備綋澶у皬鍜屾柟娉曢檺鍒跺缁堢敓鏁堛€侶TTPS 婧愮珯榛樿楠岃瘉璇佷功銆?/p>
+<button type="submit">淇濆瓨绔欑偣閰嶇疆</button>
+</form>
+<form id="honeypot-form" class="panel site-sheet" role="tabpanel" aria-labelledby="tab-site-honeypot" hidden>
+<h2>铚滅綈鍦板潃閰嶇疆</h2>
+<div class="form-grid">
+<label class="check"><input id="honeypot_enabled" type="checkbox">鍚敤铚滅綈杞€?/label>
+<label>铚滅綈鍦板潃<input id="honeypot_url" type="url" placeholder="http://192.168.1.100:8080"><small>HTTP/HTTPS 鍦板潃锛屼笉鍖呭惈璺緞锛涜浣跨敤鐙珛闅旂鐨勮湝缃愭湇鍔°€?/small></label>
+</div>
+<p class="muted">浠呰浆閫佹敾鍑荤壒寰佸強鑷畾涔夋嫤鎴鍒欏懡涓殑璇锋眰锛屼繚鐣欒姹傝矾寰勩€佹煡璇㈠拰姝ｆ枃锛屼笉杞€?Cookie 鍜岃璇佸ご銆傝湝缃愭晠闅滄椂缁х画鎷︽埅锛涢檺娴併€侀潪娉曞煙鍚嶃€佽秴澶ц姹傚拰涓氬姟绔彛绛栫暐涓嶈浆閫併€傞暅鍍忔梺鎸備笌閫忔槑涓茶仈涓嶄娇鐢ㄦ浠ｇ悊鍔熻兘銆?/p>
+<button type="submit">淇濆瓨铚滅綈閰嶇疆</button>
 </form>
 <form id="certificate-form" class="panel site-sheet" role="tabpanel" aria-labelledby="tab-site-certificates" hidden>
-<h2>HTTPS 证书库</h2>
-<p class="muted">自动识别 PEM、DER、PKCS#7（P7B/P7C）、PFX/P12，并自动整理证书链、转换为可加载格式。PFX/P12 或包含私钥的合并 PEM 无需另选私钥；加密文件请填写证书密码。镜像旁挂和透明串联不解密 HTTPS。</p>
-<label>证书对应域名<select id="certificate-domain"><option value="">仅上传到证书库，暂不绑定域名</option></select><small id="certificate-domain-help">可选择“站点配置”页签中已配置的受保护域名。上传成功后回填该域名的证书，保存站点配置后加载。</small></label>
+<h2>HTTPS 璇佷功搴?/h2>
+<p class="muted">鑷姩璇嗗埆 PEM銆丏ER銆丳KCS#7锛圥7B/P7C锛夈€丳FX/P12锛屽苟鑷姩鏁寸悊璇佷功閾俱€佽浆鎹负鍙姞杞芥牸寮忋€侾FX/P12 鎴栧寘鍚閽ョ殑鍚堝苟 PEM 鏃犻渶鍙﹂€夌閽ワ紱鍔犲瘑鏂囦欢璇峰～鍐欒瘉涔﹀瘑鐮併€傞暅鍍忔梺鎸傚拰閫忔槑涓茶仈涓嶈В瀵?HTTPS銆?/p>
+<label>璇佷功瀵瑰簲鍩熷悕<select id="certificate-domain"><option value="">浠呬笂浼犲埌璇佷功搴擄紝鏆備笉缁戝畾鍩熷悕</option></select><small id="certificate-domain-help">鍙€夋嫨鈥滅珯鐐归厤缃€濋〉绛句腑宸查厤缃殑鍙椾繚鎶ゅ煙鍚嶃€備笂浼犳垚鍔熷悗鍥炲～璇ュ煙鍚嶇殑璇佷功锛屼繚瀛樼珯鐐归厤缃悗鍔犺浇銆?/small></label>
 <div class="form-grid">
-<label>证书文件（自动识别格式）<input id="certificate-file" type="file" accept=".pem,.crt,.cer,.der,.p7b,.p7c,.pfx,.p12" required><small>支持证书链或证书包，最大 1 MiB。</small></label>
-<label>私钥文件（按需选择）<input id="private-key-file" type="file" accept=".pem,.key,.der,.pk8"><small>支持 PEM / DER 私钥，最大 64 KiB；证书包自带私钥时可留空。</small></label>
+<label>璇佷功鏂囦欢锛堣嚜鍔ㄨ瘑鍒牸寮忥級<input id="certificate-file" type="file" accept=".pem,.crt,.cer,.der,.p7b,.p7c,.pfx,.p12" required><small>鏀寔璇佷功閾炬垨璇佷功鍖咃紝鏈€澶?1 MiB銆?/small></label>
+<label>绉侀挜鏂囦欢锛堟寜闇€閫夋嫨锛?input id="private-key-file" type="file" accept=".pem,.key,.der,.pk8"><small>鏀寔 PEM / DER 绉侀挜锛屾渶澶?64 KiB锛涜瘉涔﹀寘鑷甫绉侀挜鏃跺彲鐣欑┖銆?/small></label>
 </div>
-<div class="password-field"><div class="password-heading"><label for="certificate-password">证书 / 私钥密码（如有）</label><label class="check"><input id="show-certificate-password" type="checkbox">显示密码</label></div><input id="certificate-password" type="password" autocomplete="off" placeholder="PFX/P12 或加密私钥的解密密码"><small>密码仅用于本次导入，成功后清空。</small></div>
-<div class="toolbar"><button type="submit">上传证书到证书库</button><button id="refresh-tls" type="button" class="secondary">刷新 HTTPS 状态</button></div>
-<div class="table-wrap"><table><thead><tr><th>证书域名</th><th>证书标识</th><th>有效期</th></tr></thead><tbody id="certificate-library"></tbody></table></div>
+<div class="password-field"><div class="password-heading"><label for="certificate-password">璇佷功 / 绉侀挜瀵嗙爜锛堝鏈夛級</label><label class="check"><input id="show-certificate-password" type="checkbox">鏄剧ず瀵嗙爜</label></div><input id="certificate-password" type="password" autocomplete="off" placeholder="PFX/P12 鎴栧姞瀵嗙閽ョ殑瑙ｅ瘑瀵嗙爜"><small>瀵嗙爜浠呯敤浜庢湰娆″鍏ワ紝鎴愬姛鍚庢竻绌恒€?/small></div>
+<div class="toolbar"><button type="submit">涓婁紶璇佷功鍒拌瘉涔﹀簱</button><button id="refresh-tls" type="button" class="secondary">鍒锋柊 HTTPS 鐘舵€?/button></div>
+<div class="table-wrap"><table><thead><tr><th>璇佷功鍩熷悕</th><th>璇佷功鏍囪瘑</th><th>鏈夋晥鏈?/th></tr></thead><tbody id="certificate-library"></tbody></table></div>
 <p id="certificate-info"></p><p id="tls-status" role="status"></p>
 </form>
 </section>
 <section id="rules" hidden>
-<div class="system-tabs" role="tablist" aria-label="防护规则分类">
-<button id="tab-rules-system" type="button" role="tab" data-rules-tab="system" aria-controls="sheet-rules-system" aria-selected="true">系统防护规则</button>
-<button id="tab-rules-custom" type="button" role="tab" data-rules-tab="custom" aria-controls="sheet-rules-custom" aria-selected="false" tabindex="-1">自定义规则</button>
+<div class="system-tabs" role="tablist" aria-label="闃叉姢瑙勫垯鍒嗙被">
+<button id="tab-rules-system" type="button" role="tab" data-rules-tab="system" aria-controls="sheet-rules-system" aria-selected="true">绯荤粺闃叉姢瑙勫垯</button>
+<button id="tab-rules-custom" type="button" role="tab" data-rules-tab="custom" aria-controls="sheet-rules-custom" aria-selected="false" tabindex="-1">鑷畾涔夎鍒?/button>
 </div>
 <div id="sheet-rules-system" class="panel rules-sheet" role="tabpanel" aria-labelledby="tab-rules-system">
-<h2>系统防护规则</h2>
-<p class="muted">按业务需要开关规则。特征检测可能出现误报或漏报，建议先观察验证。</p>
+<h2>绯荤粺闃叉姢瑙勫垯</h2>
+<p class="muted">鎸変笟鍔￠渶瑕佸紑鍏宠鍒欍€傜壒寰佹娴嬪彲鑳藉嚭鐜拌鎶ユ垨婕忔姤锛屽缓璁厛瑙傚療楠岃瘉銆?/p>
 <div id="rule-list">
 </div>
-<button id="save-rules">保存规则配置</button>
+<button id="save-rules">淇濆瓨瑙勫垯閰嶇疆</button>
 </div>
 <div id="sheet-rules-custom" class="rules-sheet" role="tabpanel" aria-labelledby="tab-rules-custom" hidden>
 <div class="panel">
-<div class="toolbar"><h2>自定义防护 / 黑白名单</h2><button id="new-custom-rule" type="button">新增规则</button><button id="quick-blacklist" type="button">拉黑 IP</button><button id="quick-whitelist" type="button">加白 IP</button><button id="quick-emergency" type="button">紧急防护</button></div>
-<p>多个条件同时满足才命中；优先级数字越小越先执行，自定义规则按顺序首条命中生效。紧急拦截独立于基础检测开关和观察模式。白名单跳过攻击特征检测，域名、限流、请求大小和方法限制继续生效。镜像旁挂只审计。</p>
-<div class="table-wrap"><table><thead><tr><th>优先级 / 名称</th><th>动作 / 状态</th><th>匹配条件</th><th>到期时间</th><th>操作</th></tr></thead><tbody id="custom-rule-list"></tbody></table></div>
+<div class="toolbar"><h2>鑷畾涔夐槻鎶?/ 榛戠櫧鍚嶅崟</h2><button id="new-custom-rule" type="button">鏂板瑙勫垯</button><button id="quick-blacklist" type="button">鎷夐粦 IP</button><button id="quick-whitelist" type="button">鍔犵櫧 IP</button><button id="quick-emergency" type="button">绱ф€ラ槻鎶?/button></div>
+<p>澶氫釜鏉′欢鍚屾椂婊¤冻鎵嶅懡涓紱浼樺厛绾ф暟瀛楄秺灏忚秺鍏堟墽琛岋紝鑷畾涔夎鍒欐寜椤哄簭棣栨潯鍛戒腑鐢熸晥銆傜揣鎬ユ嫤鎴嫭绔嬩簬鍩虹妫€娴嬪紑鍏冲拰瑙傚療妯″紡銆傜櫧鍚嶅崟璺宠繃鏀诲嚮鐗瑰緛妫€娴嬶紝鍩熷悕銆侀檺娴併€佽姹傚ぇ灏忓拰鏂规硶闄愬埗缁х画鐢熸晥銆傞暅鍍忔梺鎸傚彧瀹¤銆?/p>
+<div class="table-wrap"><table><thead><tr><th>浼樺厛绾?/ 鍚嶇О</th><th>鍔ㄤ綔 / 鐘舵€?/th><th>鍖归厤鏉′欢</th><th>鍒版湡鏃堕棿</th><th>鎿嶄綔</th></tr></thead><tbody id="custom-rule-list"></tbody></table></div>
 <form id="custom-rule-form">
-<h3 id="custom-rule-title">新增自定义防护规则</h3>
+<h3 id="custom-rule-title">鏂板鑷畾涔夐槻鎶よ鍒?/h3>
 <div class="form-grid">
-<label>规则名称<input id="custom-name" required maxlength="80"></label>
-<label>处理动作<select id="custom-action"><option value="block">拦截 / 黑名单</option><option value="allow">放行 / 白名单</option><option value="monitor">仅记录命中</option></select></label>
-<label>优先级（1～10000）<input id="custom-priority" type="number" min="1" max="10000" value="100" required></label>
-<label>来源 IP / 网段<input id="custom-source_ip" placeholder="192.168.1.10 或 192.168.1.0/24" maxlength="64"></label>
-<label>匹配域名<input id="custom-domain" placeholder="www.example.com 或 *.example.com" maxlength="253"></label>
-<label>请求方法（留空为全部）<input id="custom-methods" placeholder="GET,POST"></label>
-<label>URL 路径<input id="custom-path" placeholder="例如 /admin 或 /api/login" maxlength="512"></label>
-<label>路径匹配方式<select id="custom-path_match"><option value="prefix">前缀匹配</option><option value="exact">精确匹配</option><option value="contains">包含内容</option></select></label>
-<label>URL 关键字（含查询参数）<input id="custom-keyword" maxlength="256" placeholder="例如 exploit-token；不匹配请求体"></label>
-<label>自动到期时间（本地时间，可留空）<input id="custom-expires_at" type="datetime-local"></label>
+<label>瑙勫垯鍚嶇О<input id="custom-name" required maxlength="80"></label>
+<label>澶勭悊鍔ㄤ綔<select id="custom-action"><option value="block">鎷︽埅 / 榛戝悕鍗?/option><option value="allow">鏀捐 / 鐧藉悕鍗?/option><option value="monitor">浠呰褰曞懡涓?/option></select></label>
+<label>浼樺厛绾э紙1锝?0000锛?input id="custom-priority" type="number" min="1" max="10000" value="100" required></label>
+<label>鏉ユ簮 IP / 缃戞<input id="custom-source_ip" placeholder="192.168.1.10 鎴?192.168.1.0/24" maxlength="64"></label>
+<label>鍖归厤鍩熷悕<input id="custom-domain" placeholder="www.example.com 鎴?*.example.com" maxlength="253"></label>
+<label>璇锋眰鏂规硶锛堢暀绌轰负鍏ㄩ儴锛?input id="custom-methods" placeholder="GET,POST"></label>
+<label>URL 璺緞<input id="custom-path" placeholder="渚嬪 /admin 鎴?/api/login" maxlength="512"></label>
+<label>璺緞鍖归厤鏂瑰紡<select id="custom-path_match"><option value="prefix">鍓嶇紑鍖归厤</option><option value="exact">绮剧‘鍖归厤</option><option value="contains">鍖呭惈鍐呭</option></select></label>
+<label>URL 鍏抽敭瀛楋紙鍚煡璇㈠弬鏁帮級<input id="custom-keyword" maxlength="256" placeholder="渚嬪 exploit-token锛涗笉鍖归厤璇锋眰浣?></label>
+<label>鑷姩鍒版湡鏃堕棿锛堟湰鍦版椂闂达紝鍙暀绌猴級<input id="custom-expires_at" type="datetime-local"></label>
 </div>
-<div class="toolbar"><label class="check"><input id="custom-enabled" type="checkbox" checked>启用规则</label><label class="check"><input id="custom-case_sensitive" type="checkbox">路径及关键字区分大小写</label><label class="check"><input id="custom-match_all" type="checkbox">明确匹配全部请求（用于全站紧急防护）</label></div>
-<p>留空的条件不参与匹配；至少填写一个条件，或明确选择匹配全部请求。保存立即生效，命中记录可在“访问审计”查看 CUSTOM 规则编号。</p>
-<div class="toolbar"><button type="submit">保存自定义规则</button><button id="cancel-custom-edit" type="button">取消编辑 / 重置</button></div>
+<div class="toolbar"><label class="check"><input id="custom-enabled" type="checkbox" checked>鍚敤瑙勫垯</label><label class="check"><input id="custom-case_sensitive" type="checkbox">璺緞鍙婂叧閿瓧鍖哄垎澶у皬鍐?/label><label class="check"><input id="custom-match_all" type="checkbox">鏄庣‘鍖归厤鍏ㄩ儴璇锋眰锛堢敤浜庡叏绔欑揣鎬ラ槻鎶わ級</label></div>
+<p>鐣欑┖鐨勬潯浠朵笉鍙備笌鍖归厤锛涜嚦灏戝～鍐欎竴涓潯浠讹紝鎴栨槑纭€夋嫨鍖归厤鍏ㄩ儴璇锋眰銆備繚瀛樼珛鍗崇敓鏁堬紝鍛戒腑璁板綍鍙湪鈥滆闂璁♀€濇煡鐪?CUSTOM 瑙勫垯缂栧彿銆?/p>
+<div class="toolbar"><button type="submit">淇濆瓨鑷畾涔夎鍒?/button><button id="cancel-custom-edit" type="button">鍙栨秷缂栬緫 / 閲嶇疆</button></div>
 </form>
 </div>
 <div id="sheet-rules-cc" class="panel">
-<div class="toolbar"><button id="cc-new" type="button">新增 CC 策略</button></div>
-<div class="table-wrap"><table><thead><tr><th>策略名称</th><th>绑定目标</th><th>状态 / 阈值</th><th>操作</th></tr></thead><tbody id="cc-list"></tbody></table></div>
+<div class="toolbar"><button id="cc-new" type="button">鏂板 CC 绛栫暐</button></div>
+<div class="table-wrap"><table><thead><tr><th>绛栫暐鍚嶇О</th><th>缁戝畾鐩爣</th><th>鐘舵€?/ 闃堝€?/th><th>鎿嶄綔</th></tr></thead><tbody id="cc-list"></tbody></table></div>
 <form id="cc-form">
-<h2>CC 防护</h2>
-<label>策略名称<input id="cc-name" maxlength="80" required></label>
-<p>按真实连接来源 IP 统计 HTTP/HTTPS 请求，超过阈值临时封禁，自动到期恢复。独立于观察模式及攻击特征开关，命中返回 429。</p>
-<label class="check"><input id="cc-enabled" type="checkbox">启用 CC 防护</label>
+<h2>CC 闃叉姢</h2>
+<label>绛栫暐鍚嶇О<input id="cc-name" maxlength="80" required></label>
+<p>鎸夌湡瀹炶繛鎺ユ潵婧?IP 缁熻 HTTP/HTTPS 璇锋眰锛岃秴杩囬槇鍊间复鏃跺皝绂侊紝鑷姩鍒版湡鎭㈠銆傜嫭绔嬩簬瑙傚療妯″紡鍙婃敾鍑荤壒寰佸紑鍏筹紝鍛戒腑杩斿洖 429銆?/p>
+<label class="check"><input id="cc-enabled" type="checkbox">鍚敤 CC 闃叉姢</label>
 <fieldset id="cc-fields" disabled>
 <div class="form-grid">
-<label>防护绑定<select id="cc-target_type"><option value="domain">指定域名</option><option value="ip">指定目标 IP</option><option value="all">全部业务入口</option></select></label>
-<label id="cc-target-field">绑定目标<input id="cc-target" list="cc-domain-options" maxlength="253" placeholder="www.example.com"><datalist id="cc-domain-options"></datalist><small id="cc-target-help">填写受保护域名，可选择已配置域名，支持单层通配符。</small></label>
+<label>闃叉姢缁戝畾<select id="cc-target_type"><option value="domain">鎸囧畾鍩熷悕</option><option value="ip">鎸囧畾鐩爣 IP</option><option value="all">鍏ㄩ儴涓氬姟鍏ュ彛</option></select></label>
+<label id="cc-target-field">缁戝畾鐩爣<input id="cc-target" list="cc-domain-options" maxlength="253" placeholder="www.example.com"><datalist id="cc-domain-options"></datalist><small id="cc-target-help">濉啓鍙椾繚鎶ゅ煙鍚嶏紝鍙€夋嫨宸查厤缃煙鍚嶏紝鏀寔鍗曞眰閫氶厤绗︺€?/small></label>
 </div>
 <div class="form-grid">
-<label>统计窗口（秒）<input id="cc-window_seconds" type="number" min="1" max="3600" value="10" required></label>
-<label>每 IP 窗口最大请求数<input id="cc-max_requests" type="number" min="1" max="100000" value="100" required></label>
-<label>临时封禁（秒）<input id="cc-ban_seconds" type="number" min="1" max="86400" value="60" required></label>
+<label>缁熻绐楀彛锛堢锛?input id="cc-window_seconds" type="number" min="1" max="3600" value="10" required></label>
+<label>姣?IP 绐楀彛鏈€澶ц姹傛暟<input id="cc-max_requests" type="number" min="1" max="100000" value="100" required></label>
+<label>涓存椂灏佺锛堢锛?input id="cc-ban_seconds" type="number" min="1" max="86400" value="60" required></label>
 </div>
 </fieldset>
-<p class="muted">仅对匹配绑定目标的请求执行 CC，目标 IP 指 WAF 接收连接的实际本地 IP，不是访客 IP 或源站 IP。基础的“每 IP 每分钟请求数”仍生效，白名单不绕过 CC。计数按进程保存，重启或策略修改会重置；HTTP 与 HTTPS 进程独立计数。前置代理场景按代理 IP 统计。镜像旁挂与透明串联不使用此入口策略。</p>
-<div class="toolbar"><button type="submit">保存 CC 防护</button><button id="cc-reset" type="button">取消编辑 / 重置</button></div><p id="cc-status" role="status"></p>
+<p class="muted">浠呭鍖归厤缁戝畾鐩爣鐨勮姹傛墽琛?CC锛岀洰鏍?IP 鎸?WAF 鎺ユ敹杩炴帴鐨勫疄闄呮湰鍦?IP锛屼笉鏄瀹?IP 鎴栨簮绔?IP銆傚熀纭€鐨勨€滄瘡 IP 姣忓垎閽熻姹傛暟鈥濅粛鐢熸晥锛岀櫧鍚嶅崟涓嶇粫杩?CC銆傝鏁版寜杩涚▼淇濆瓨锛岄噸鍚垨绛栫暐淇敼浼氶噸缃紱HTTP 涓?HTTPS 杩涚▼鐙珛璁℃暟銆傚墠缃唬鐞嗗満鏅寜浠ｇ悊 IP 缁熻銆傞暅鍍忔梺鎸備笌閫忔槑涓茶仈涓嶄娇鐢ㄦ鍏ュ彛绛栫暐銆?/p>
+<div class="toolbar"><button type="submit">淇濆瓨 CC 闃叉姢</button><button id="cc-reset" type="button">鍙栨秷缂栬緫 / 閲嶇疆</button></div><p id="cc-status" role="status"></p>
 </form>
 </div>
 <div id="sheet-rules-ports" class="panel">
-<div class="toolbar"><button id="ports-new" type="button">新增业务端口策略</button></div>
-<div class="table-wrap"><table><thead><tr><th>策略名称</th><th>绑定目标</th><th>状态 / 阈值</th><th>操作</th></tr></thead><tbody id="ports-list"></tbody></table></div>
+<div class="toolbar"><button id="ports-new" type="button">鏂板涓氬姟绔彛绛栫暐</button></div>
+<div class="table-wrap"><table><thead><tr><th>绛栫暐鍚嶇О</th><th>缁戝畾鐩爣</th><th>鐘舵€?/ 闃堝€?/th><th>鎿嶄綔</th></tr></thead><tbody id="ports-list"></tbody></table></div>
 <form id="ports-form">
-<h2>HTTP/HTTPS 业务端口防护</h2>
-<label>策略名称<input id="ports-name" maxlength="80" required></label>
-<p>自动保护 WAF 的 HTTP 及已启用的 HTTPS 监听入口，配置来源访问控制与正在处理的 HTTP 请求并发上限。管理入口不受限制。</p>
-<label class="check"><input id="ports-enabled" type="checkbox">启用业务端口防护</label>
+<h2>HTTP/HTTPS 涓氬姟绔彛闃叉姢</h2>
+<label>绛栫暐鍚嶇О<input id="ports-name" maxlength="80" required></label>
+<p>鑷姩淇濇姢 WAF 鐨?HTTP 鍙婂凡鍚敤鐨?HTTPS 鐩戝惉鍏ュ彛锛岄厤缃潵婧愯闂帶鍒朵笌姝ｅ湪澶勭悊鐨?HTTP 璇锋眰骞跺彂涓婇檺銆傜鐞嗗叆鍙ｄ笉鍙楅檺鍒躲€?/p>
+<label class="check"><input id="ports-enabled" type="checkbox">鍚敤涓氬姟绔彛闃叉姢</label>
 <fieldset id="ports-fields" disabled>
 <div class="form-grid">
-<label>防护绑定<select id="ports-target_type"><option value="all">全部业务入口</option><option value="domain">指定域名</option><option value="ip">指定目标 IP</option></select></label>
-<label id="ports-target-field" hidden>绑定目标<input id="ports-target" maxlength="253" list="cc-domain-options"></label>
-<label>业务协议<select id="ports-protocol"><option value="all">HTTP 与 HTTPS</option><option value="http">HTTP</option><option value="https">HTTPS</option></select></label>
-<label>业务监听端口<input id="ports-destination_port" type="number" min="1" max="65535" placeholder="留空匹配全部业务端口"><small>匹配 WAF 实际监听端口；不会新增监听端口。</small></label>
+<label>闃叉姢缁戝畾<select id="ports-target_type"><option value="all">鍏ㄩ儴涓氬姟鍏ュ彛</option><option value="domain">鎸囧畾鍩熷悕</option><option value="ip">鎸囧畾鐩爣 IP</option></select></label>
+<label id="ports-target-field" hidden>缁戝畾鐩爣<input id="ports-target" maxlength="253" list="cc-domain-options"></label>
+<label>涓氬姟鍗忚<select id="ports-protocol"><option value="all">HTTP 涓?HTTPS</option><option value="http">HTTP</option><option value="https">HTTPS</option></select></label>
+<label>涓氬姟鐩戝惉绔彛<input id="ports-destination_port" type="number" min="1" max="65535" placeholder="鐣欑┖鍖归厤鍏ㄩ儴涓氬姟绔彛"><small>鍖归厤 WAF 瀹為檯鐩戝惉绔彛锛涗笉浼氭柊澧炵洃鍚鍙ｃ€?/small></label>
 </div>
 <div class="form-grid">
-<label>允许来源（每行一个 IP / CIDR）<textarea id="ports-allowed_sources" rows="5" placeholder="留空允许所有未被禁止的来源"></textarea></label>
-<label>禁止来源（每行一个 IP / CIDR）<textarea id="ports-blocked_sources" rows="5" placeholder="例如 203.0.113.0/24"></textarea></label>
+<label>鍏佽鏉ユ簮锛堟瘡琛屼竴涓?IP / CIDR锛?textarea id="ports-allowed_sources" rows="5" placeholder="鐣欑┖鍏佽鎵€鏈夋湭琚姝㈢殑鏉ユ簮"></textarea></label>
+<label>绂佹鏉ユ簮锛堟瘡琛屼竴涓?IP / CIDR锛?textarea id="ports-blocked_sources" rows="5" placeholder="渚嬪 203.0.113.0/24"></textarea></label>
 </div>
 <div class="form-grid">
-<label>每 IP 最大并发请求<input id="ports-max_concurrent_per_ip" type="number" min="1" max="10000" value="20" required></label>
-<label>入口最大并发请求<input id="ports-max_concurrent_total" type="number" min="1" max="50000" value="1000" required></label>
+<label>姣?IP 鏈€澶у苟鍙戣姹?input id="ports-max_concurrent_per_ip" type="number" min="1" max="10000" value="20" required></label>
+<label>鍏ュ彛鏈€澶у苟鍙戣姹?input id="ports-max_concurrent_total" type="number" min="1" max="50000" value="1000" required></label>
 </div>
 </fieldset>
-<p class="muted">禁止来源优先于允许来源。填写允许来源后，其他来源均拒绝（403）；并发超限返回 429 或 503。每个入口进程独立统计，包括上传和源站响应阶段，不统计空闲 TCP 连接。此功能不修改 Ubuntu 防火墙，不提供 SYN/UDP 洪泛防护，不影响其他主机端口。</p>
-<div class="toolbar"><button type="submit">保存业务端口防护</button><button id="ports-reset" type="button">取消编辑 / 重置</button></div><p id="ports-status" role="status"></p>
+<p class="muted">绂佹鏉ユ簮浼樺厛浜庡厑璁告潵婧愩€傚～鍐欏厑璁告潵婧愬悗锛屽叾浠栨潵婧愬潎鎷掔粷锛?03锛夛紱骞跺彂瓒呴檺杩斿洖 429 鎴?503銆傛瘡涓叆鍙ｈ繘绋嬬嫭绔嬬粺璁★紝鍖呮嫭涓婁紶鍜屾簮绔欏搷搴旈樁娈碉紝涓嶇粺璁＄┖闂?TCP 杩炴帴銆傛鍔熻兘涓嶄慨鏀?Ubuntu 闃茬伀澧欙紝涓嶆彁渚?SYN/UDP 娲硾闃叉姢锛屼笉褰卞搷鍏朵粬涓绘満绔彛銆?/p>
+<div class="toolbar"><button type="submit">淇濆瓨涓氬姟绔彛闃叉姢</button><button id="ports-reset" type="button">鍙栨秷缂栬緫 / 閲嶇疆</button></div><p id="ports-status" role="status"></p>
 </form>
 </div>
 </div>
@@ -214,36 +231,36 @@
 <section id="events" hidden>
 <div class="panel">
 <div class="toolbar">
-<h2>访问审计</h2>
-<select id="action" aria-label="审计结果筛选">
-<option value="">全部结果</option>
-<option value="business">全部业务请求</option>
-<option value="hits">拦截及观察命中</option>
-<option value="blacklist">黑名单命中</option>
-<option value="attacks">攻击类型命中</option>
-<option value="blocked">已拦截</option>
-<option value="detected">观察命中</option>
-<option value="allowed">已转发</option>
-<option value="observed">旁挂已审计</option>
-<option value="error">代理异常</option>
-<option value="admin">配置变更</option>
+<h2>璁块棶瀹¤</h2>
+<select id="action" aria-label="瀹¤缁撴灉绛涢€?>
+<option value="">鍏ㄩ儴缁撴灉</option>
+<option value="business">鍏ㄩ儴涓氬姟璇锋眰</option>
+<option value="hits">鎷︽埅鍙婅瀵熷懡涓?/option>
+<option value="blacklist">榛戝悕鍗曞懡涓?/option>
+<option value="attacks">鏀诲嚮绫诲瀷鍛戒腑</option>
+<option value="blocked">宸叉嫤鎴?/option>
+<option value="detected">瑙傚療鍛戒腑</option>
+<option value="allowed">宸茶浆鍙?/option>
+<option value="observed">鏃佹寕宸插璁?/option>
+<option value="error">浠ｇ悊寮傚父</option>
+<option value="admin">閰嶇疆鍙樻洿</option>
 </select>
 </div>
-<div class="toolbar" id="event-filter-bar" hidden><span id="event-filter-summary"></span><button type="button" id="event-filter-clear" class="secondary">清除总览筛选</button></div>
-<p class="muted">仅记录请求元数据，不保存请求体、查询参数、Cookie 和认证信息。时间以浏览器本地时区显示。国家数据：<a href="https://db-ip.com" target="_blank" rel="noopener noreferrer">IP Geolocation by DB-IP</a>。</p>
+<div class="toolbar" id="event-filter-bar" hidden><span id="event-filter-summary"></span><button type="button" id="event-filter-clear" class="secondary">娓呴櫎鎬昏绛涢€?/button></div>
+<p class="muted">浠呰褰曡姹傚厓鏁版嵁锛屼笉淇濆瓨璇锋眰浣撱€佹煡璇㈠弬鏁般€丆ookie 鍜岃璇佷俊鎭€傛椂闂翠互娴忚鍣ㄦ湰鍦版椂鍖烘樉绀恒€傚浗瀹舵暟鎹細<a href="https://db-ip.com" target="_blank" rel="noopener noreferrer">IP Geolocation by DB-IP</a>銆?/p>
 <div class="table-wrap">
 <table>
 <thead>
 <tr>
-<th>时间</th>
-<th>来源 IP</th>
-<th>来源国家</th>
-<th>访问域名</th>
-<th>请求</th>
-<th>结果</th>
-<th>规则</th>
-<th>状态码</th>
-<th>请求编号</th>
+<th>鏃堕棿</th>
+<th>鏉ユ簮 IP</th>
+<th>鏉ユ簮鍥藉</th>
+<th>璁块棶鍩熷悕</th>
+<th>璇锋眰</th>
+<th>缁撴灉</th>
+<th>瑙勫垯</th>
+<th>鐘舵€佺爜</th>
+<th>璇锋眰缂栧彿</th>
 </tr>
 </thead>
 <tbody id="event-list">
@@ -251,155 +268,155 @@
 </table>
 </div>
 <div class="pager">
-<label class="page-size-label" for="event-page-size">每页显示<select id="event-page-size"><option value="20">20 条</option><option value="50">50 条</option><option value="100" selected>100 条</option><option value="200">200 条</option><option value="500">500 条</option></select></label>
-<button id="prev" class="secondary">上一页</button>
+<label class="page-size-label" for="event-page-size">姣忛〉鏄剧ず<select id="event-page-size"><option value="20">20 鏉?/option><option value="50">50 鏉?/option><option value="100" selected>100 鏉?/option><option value="200">200 鏉?/option><option value="500">500 鏉?/option></select></label>
+<button id="prev" class="secondary">涓婁竴椤?/button>
 <span id="page-label" role="status" aria-live="polite">
 </span>
-<button id="next" class="secondary">下一页</button>
+<button id="next" class="secondary">涓嬩竴椤?/button>
 </div>
 </div>
 </section>
 <section id="users" hidden>
 <div class="panel">
-<h2>用户管理</h2>
-<p class="muted">按角色分配权限，或选择自定义权限。管理员拥有全部权限；至少保留一名启用的管理员。</p>
-<div class="table-wrap"><table><thead><tr><th>用户名</th><th>角色</th><th>状态</th><th>权限</th><th>操作</th></tr></thead><tbody id="user-list"></tbody></table></div>
+<h2>鐢ㄦ埛绠＄悊</h2>
+<p class="muted">鎸夎鑹插垎閰嶆潈闄愶紝鎴栭€夋嫨鑷畾涔夋潈闄愩€傜鐞嗗憳鎷ユ湁鍏ㄩ儴鏉冮檺锛涜嚦灏戜繚鐣欎竴鍚嶅惎鐢ㄧ殑绠＄悊鍛樸€?/p>
+<div class="table-wrap"><table><thead><tr><th>鐢ㄦ埛鍚?/th><th>瑙掕壊</th><th>鐘舵€?/th><th>鏉冮檺</th><th>鎿嶄綔</th></tr></thead><tbody id="user-list"></tbody></table></div>
 </div>
 <form id="user-form" class="panel">
-<h2 id="user-form-title">新增用户</h2>
+<h2 id="user-form-title">鏂板鐢ㄦ埛</h2>
 <div class="form-grid">
-<label>用户名<input id="user-username" required maxlength="64" autocomplete="off"></label>
-<label>角色<select id="user-role"></select></label>
-<label>密码（编辑留空保留）<input id="user-password" type="password" minlength="10" maxlength="128" autocomplete="new-password"></label>
+<label>鐢ㄦ埛鍚?input id="user-username" required maxlength="64" autocomplete="off"></label>
+<label>瑙掕壊<select id="user-role"></select></label>
+<label>瀵嗙爜锛堢紪杈戠暀绌轰繚鐣欙級<input id="user-password" type="password" minlength="10" maxlength="128" autocomplete="new-password"></label>
 </div>
-<label class="check"><input id="user-enabled" type="checkbox" checked>启用用户</label>
+<label class="check"><input id="user-enabled" type="checkbox" checked>鍚敤鐢ㄦ埛</label>
 <div id="user-permissions" class="form-grid"></div>
-<div class="toolbar"><button type="submit">保存用户</button><button id="user-reset" type="button" class="secondary">取消编辑 / 新增用户</button></div>
+<div class="toolbar"><button type="submit">淇濆瓨鐢ㄦ埛</button><button id="user-reset" type="button" class="secondary">鍙栨秷缂栬緫 / 鏂板鐢ㄦ埛</button></div>
 </form>
 </section>
 <section id="password" hidden>
 <form id="password-form" class="panel">
-<h2>修改当前用户密码</h2>
+<h2>淇敼褰撳墠鐢ㄦ埛瀵嗙爜</h2>
 <p id="current-user"></p>
-<p class="muted">密码长度 10～128 个字符。保存后旧密码立即失效；浏览器再次要求登录时请使用新密码。</p>
-<label>当前密码<input id="current-password" type="password" autocomplete="current-password" required></label>
-<label>新密码<input id="new-password" type="password" minlength="10" maxlength="128" autocomplete="new-password" required></label>
-<label>确认新密码<input id="confirm-password" type="password" minlength="10" maxlength="128" autocomplete="new-password" required></label>
-<button type="submit">修改密码</button>
+<p class="muted">瀵嗙爜闀垮害 10锝?28 涓瓧绗︺€備繚瀛樺悗鏃у瘑鐮佺珛鍗冲け鏁堬紱娴忚鍣ㄥ啀娆¤姹傜櫥褰曟椂璇蜂娇鐢ㄦ柊瀵嗙爜銆?/p>
+<label>褰撳墠瀵嗙爜<input id="current-password" type="password" autocomplete="current-password" required></label>
+<label>鏂板瘑鐮?input id="new-password" type="password" minlength="10" maxlength="128" autocomplete="new-password" required></label>
+<label>纭鏂板瘑鐮?input id="confirm-password" type="password" minlength="10" maxlength="128" autocomplete="new-password" required></label>
+<button type="submit">淇敼瀵嗙爜</button>
 </form>
 </section>
 <section id="system" hidden>
-<div class="system-tabs" role="tablist" aria-label="系统配置功能">
-<button id="tab-platform" type="button" role="tab" data-system-tab="platform" aria-controls="sheet-platform" aria-selected="true">平台配置</button>
-<button id="tab-database" type="button" role="tab" data-system-tab="database" aria-controls="sheet-database" aria-selected="false" tabindex="-1">数据库配置</button>
-<button id="tab-logging" type="button" role="tab" data-system-tab="logging" aria-controls="sheet-logging" aria-selected="false" tabindex="-1">日志配置</button>
-<button id="tab-network" type="button" role="tab" data-system-tab="network" aria-controls="sheet-network" aria-selected="false" tabindex="-1">网卡配置</button>
-<button id="tab-status" type="button" role="tab" data-system-tab="status" aria-controls="sheet-status" aria-selected="false" tabindex="-1">运行状态</button>
-<button id="tab-guide" type="button" role="tab" data-system-tab="guide" aria-controls="sheet-guide" aria-selected="false" tabindex="-1">部署说明</button>
+<div class="system-tabs" role="tablist" aria-label="绯荤粺閰嶇疆鍔熻兘">
+<button id="tab-platform" type="button" role="tab" data-system-tab="platform" aria-controls="sheet-platform" aria-selected="true">骞冲彴閰嶇疆</button>
+<button id="tab-database" type="button" role="tab" data-system-tab="database" aria-controls="sheet-database" aria-selected="false" tabindex="-1">鏁版嵁搴撻厤缃?/button>
+<button id="tab-logging" type="button" role="tab" data-system-tab="logging" aria-controls="sheet-logging" aria-selected="false" tabindex="-1">鏃ュ織閰嶇疆</button>
+<button id="tab-network" type="button" role="tab" data-system-tab="network" aria-controls="sheet-network" aria-selected="false" tabindex="-1">缃戝崱閰嶇疆</button>
+<button id="tab-status" type="button" role="tab" data-system-tab="status" aria-controls="sheet-status" aria-selected="false" tabindex="-1">杩愯鐘舵€?/button>
+<button id="tab-guide" type="button" role="tab" data-system-tab="guide" aria-controls="sheet-guide" aria-selected="false" tabindex="-1">閮ㄧ讲璇存槑</button>
 </div>
 <div id="sheet-platform" class="system-sheet" role="tabpanel" aria-labelledby="tab-platform">
 <form id="platform-form" class="panel">
-<h2>平台配置</h2>
+<h2>骞冲彴閰嶇疆</h2>
 <div class="form-grid">
-<label>WAF 平台名称<input id="platform_name" maxlength="60" required></label>
-<label>设备主机名<input id="hostname" maxlength="63" pattern="[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?" required>
-<small>小写字母、数字和中划线；修改 Docker 容器主机名，Ubuntu 宿主机名称保持原值。</small></label>
+<label>WAF 骞冲彴鍚嶇О<input id="platform_name" maxlength="60" required></label>
+<label>璁惧涓绘満鍚?input id="hostname" maxlength="63" pattern="[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?" required>
+<small>灏忓啓瀛楁瘝銆佹暟瀛楀拰涓垝绾匡紱淇敼 Docker 瀹瑰櫒涓绘満鍚嶏紝Ubuntu 瀹夸富鏈哄悕绉颁繚鎸佸師鍊笺€?/small></label>
 </div>
 <p id="platform-status" class="muted"></p>
-<p class="muted">平台名称保存后立即生效。主机名保存后，在 Ubuntu 项目目录执行 bash start.sh 重建容器生效。</p>
-<button type="submit">保存平台配置</button>
+<p class="muted">骞冲彴鍚嶇О淇濆瓨鍚庣珛鍗崇敓鏁堛€備富鏈哄悕淇濆瓨鍚庯紝鍦?Ubuntu 椤圭洰鐩綍鎵ц bash start.sh 閲嶅缓瀹瑰櫒鐢熸晥銆?/p>
+<button type="submit">淇濆瓨骞冲彴閰嶇疆</button>
 </form>
 </div>
 <div id="sheet-database" class="system-sheet" role="tabpanel" aria-labelledby="tab-database" hidden>
 <div class="panel">
-<h2>数据库配置</h2>
+<h2>鏁版嵁搴撻厤缃?/h2>
 <div class="form-grid">
-<label>数据库类型<select id="database-engine" disabled><option value="" selected disabled>正在读取连接配置…</option><option value="sqlite">SQLite</option><option value="postgresql">PostgreSQL（PQ）</option></select></label>
-<label id="database-path-field" hidden>当前 SQLite 数据库文件<input id="database-path" readonly></label>
+<label>鏁版嵁搴撶被鍨?select id="database-engine" disabled><option value="" selected disabled>姝ｅ湪璇诲彇杩炴帴閰嶇疆鈥?/option><option value="sqlite">SQLite</option><option value="postgresql">PostgreSQL锛圥Q锛?/option></select></label>
+<label id="database-path-field" hidden>褰撳墠 SQLite 鏁版嵁搴撴枃浠?input id="database-path" readonly></label>
 </div>
 <p id="database-size" class="muted"></p>
-<div id="sqlite-config" hidden><label>SQLite 数据库文件<input id="db-sqlite-path" placeholder="runtime/waf.sqlite3"><small>必须位于 runtime 目录。切换时选择新的空数据库文件，避免覆盖旧数据。</small></label></div>
+<div id="sqlite-config" hidden><label>SQLite 鏁版嵁搴撴枃浠?input id="db-sqlite-path" placeholder="runtime/waf.sqlite3"><small>蹇呴』浣嶄簬 runtime 鐩綍銆傚垏鎹㈡椂閫夋嫨鏂扮殑绌烘暟鎹簱鏂囦欢锛岄伩鍏嶈鐩栨棫鏁版嵁銆?/small></label></div>
 <div id="pq-config" hidden>
 <div class="form-grid">
-<label>PostgreSQL 主机<input id="db-host" placeholder="192.168.17.127"></label>
-<label>端口<input id="db-port" type="number" min="1" max="65535" value="5432"></label>
-<label>数据库名<input id="db-name" placeholder="waf"></label>
-<label>用户名<input id="db-user" placeholder="wafuser"></label>
+<label>PostgreSQL 涓绘満<input id="db-host" placeholder="192.168.17.127"></label>
+<label>绔彛<input id="db-port" type="number" min="1" max="65535" value="5432"></label>
+<label>鏁版嵁搴撳悕<input id="db-name" placeholder="waf"></label>
+<label>鐢ㄦ埛鍚?input id="db-user" placeholder="wafuser"></label>
 <div class="password-field">
-<div class="password-heading"><label for="db-password">密码</label><label class="check"><input id="db-show-password" type="checkbox">显示密码</label></div>
-<input id="db-password" type="password" autocomplete="new-password" placeholder="留空保留相同连接的已保存密码" aria-describedby="db-password-help">
-<small id="db-password-help" class="muted">勾选可查看已保存的连接密码。</small>
+<div class="password-heading"><label for="db-password">瀵嗙爜</label><label class="check"><input id="db-show-password" type="checkbox">鏄剧ず瀵嗙爜</label></div>
+<input id="db-password" type="password" autocomplete="new-password" placeholder="鐣欑┖淇濈暀鐩稿悓杩炴帴鐨勫凡淇濆瓨瀵嗙爜" aria-describedby="db-password-help">
+<small id="db-password-help" class="muted">鍕鹃€夊彲鏌ョ湅宸蹭繚瀛樼殑杩炴帴瀵嗙爜銆?/small>
 </div>
-<label>TLS 模式<select id="db-sslmode"><option value="disable">关闭</option><option value="prefer">优先使用 TLS</option><option value="require">必须使用 TLS</option><option value="verify-full">验证证书及主机名</option></select></label>
+<label>TLS 妯″紡<select id="db-sslmode"><option value="disable">鍏抽棴</option><option value="prefer">浼樺厛浣跨敤 TLS</option><option value="require">蹇呴』浣跨敤 TLS</option><option value="verify-full">楠岃瘉璇佷功鍙婁富鏈哄悕</option></select></label>
 </div>
 </div>
-<div class="toolbar"><button id="save-database-config" type="button">保存数据库配置</button><button id="probe-database-config" type="button" class="secondary">测试所选连接</button><button id="initialize-database" type="button" class="secondary">数据初始化</button><button id="discard-database-config" type="button" class="secondary">取消待生效配置</button></div>
-<p class="muted">更换数据库后可点击“数据初始化”，为页面所填的数据库创建 WAF 表结构和默认防护配置，保留已有数据。PostgreSQL 数据库本身需预先创建，账号需有建表权限；初始化不迁移历史数据，也不自动切换当前存储。</p>
+<div class="toolbar"><button id="save-database-config" type="button">淇濆瓨鏁版嵁搴撻厤缃?/button><button id="probe-database-config" type="button" class="secondary">娴嬭瘯鎵€閫夎繛鎺?/button><button id="initialize-database" type="button" class="secondary">鏁版嵁鍒濆鍖?/button><button id="discard-database-config" type="button" class="secondary">鍙栨秷寰呯敓鏁堥厤缃?/button></div>
+<p class="muted">鏇存崲鏁版嵁搴撳悗鍙偣鍑烩€滄暟鎹垵濮嬪寲鈥濓紝涓洪〉闈㈡墍濉殑鏁版嵁搴撳垱寤?WAF 琛ㄧ粨鏋勫拰榛樿闃叉姢閰嶇疆锛屼繚鐣欏凡鏈夋暟鎹€侾ostgreSQL 鏁版嵁搴撴湰韬渶棰勫厛鍒涘缓锛岃处鍙烽渶鏈夊缓琛ㄦ潈闄愶紱鍒濆鍖栦笉杩佺Щ鍘嗗彶鏁版嵁锛屼篃涓嶈嚜鍔ㄥ垏鎹㈠綋鍓嶅瓨鍌ㄣ€?/p>
 <p id="database-initialize-result" role="status"></p>
 <p id="database-config-status" role="status"></p>
-<details><summary>数据库切换操作说明</summary>
-<p class="muted">更换存储需先保存连接配置，再在 Ubuntu /opt/waf 停服并执行迁移；目标已有业务数据时拒绝覆盖。</p>
+<details><summary>鏁版嵁搴撳垏鎹㈡搷浣滆鏄?/summary>
+<p class="muted">鏇存崲瀛樺偍闇€鍏堜繚瀛樿繛鎺ラ厤缃紝鍐嶅湪 Ubuntu /opt/waf 鍋滄湇骞舵墽琛岃縼绉伙紱鐩爣宸叉湁涓氬姟鏁版嵁鏃舵嫆缁濊鐩栥€?/p>
 <pre>docker compose stop waf
 docker compose run --rm --no-deps --entrypoint python waf -m waf.switch_database
 docker compose up -d --no-build --pull never waf</pre></details>
 <form id="database-runtime-form">
-<h3>数据库运行参数</h3>
+<h3>鏁版嵁搴撹繍琛屽弬鏁?/h3>
 <div class="form-grid">
-<label>连接等待时间（秒）<input id="database_timeout" type="number" min="1" max="120" required></label>
-<label id="sqlite-wal-field">WAL 自动检查点（页）<input id="wal_autocheckpoint" type="number" min="100" max="100000" required></label>
+<label>杩炴帴绛夊緟鏃堕棿锛堢锛?input id="database_timeout" type="number" min="1" max="120" required></label>
+<label id="sqlite-wal-field">WAL 鑷姩妫€鏌ョ偣锛堥〉锛?input id="wal_autocheckpoint" type="number" min="100" max="100000" required></label>
 </div>
-<p class="muted">运行参数保存后立即生效。PostgreSQL 使用连接等待时间作为 SQL 执行超时，WAL 检查点仅适用于 SQLite。本地开发模式保持独立 SQLite。</p>
-<div class="toolbar"><button type="submit">保存运行参数</button><button id="test-database" type="button" class="secondary">测试已保存的数据库配置</button></div>
+<p class="muted">杩愯鍙傛暟淇濆瓨鍚庣珛鍗崇敓鏁堛€侾ostgreSQL 浣跨敤杩炴帴绛夊緟鏃堕棿浣滀负 SQL 鎵ц瓒呮椂锛學AL 妫€鏌ョ偣浠呴€傜敤浜?SQLite銆傛湰鍦板紑鍙戞ā寮忎繚鎸佺嫭绔?SQLite銆?/p>
+<div class="toolbar"><button type="submit">淇濆瓨杩愯鍙傛暟</button><button id="test-database" type="button" class="secondary">娴嬭瘯宸蹭繚瀛樼殑鏁版嵁搴撻厤缃?/button></div>
 <p id="database-test-result" role="status"></p>
 </form>
 </div>
 </div>
 <div id="sheet-logging" class="system-sheet" role="tabpanel" aria-labelledby="tab-logging" hidden>
 <form id="logging-form" class="panel">
-<h2>日志转发配置</h2>
-<p>转发全部访问、防护、旁挂观察、错误及管理操作审计记录。首次启用从现有历史记录开始发送，随后持续转发新增记录。密码、Cookie、请求体和数据库内容不包含在日志中。</p>
-<label class="check"><input id="log-enabled" type="checkbox">启用日志转发</label>
+<h2>鏃ュ織杞彂閰嶇疆</h2>
+<p>杞彂鍏ㄩ儴璁块棶銆侀槻鎶ゃ€佹梺鎸傝瀵熴€侀敊璇強绠＄悊鎿嶄綔瀹¤璁板綍銆傞娆″惎鐢ㄤ粠鐜版湁鍘嗗彶璁板綍寮€濮嬪彂閫侊紝闅忓悗鎸佺画杞彂鏂板璁板綍銆傚瘑鐮併€丆ookie銆佽姹備綋鍜屾暟鎹簱鍐呭涓嶅寘鍚湪鏃ュ織涓€?/p>
+<label class="check"><input id="log-enabled" type="checkbox">鍚敤鏃ュ織杞彂</label>
 <div class="form-grid log-connection-grid">
-<label>接收服务器 IP<input id="log-host" placeholder="192.168.1.100" maxlength="45"></label>
-<label>接收端口<input id="log-port" type="number" min="1" max="65535" value="514" required></label>
-<label>传输协议<select id="log-protocol"><option value="udp">UDP</option><option value="tcp">TCP</option><option value="tls">TCP + TLS（校验证书）</option></select></label>
-<label>数据格式<select id="log-format"><option value="json">JSON</option><option value="syslog">Syslog（RFC 5424，JSON 内容）</option><option value="custom">自定义模板</option></select></label>
-<label id="log-facility-field" hidden>Syslog Facility（0～23；16 为 local0）<input id="log-facility" type="number" min="0" max="23" value="16"></label>
+<label>鎺ユ敹鏈嶅姟鍣?IP<input id="log-host" placeholder="192.168.1.100" maxlength="45"></label>
+<label>鎺ユ敹绔彛<input id="log-port" type="number" min="1" max="65535" value="514" required></label>
+<label>浼犺緭鍗忚<select id="log-protocol"><option value="udp">UDP</option><option value="tcp">TCP</option><option value="tls">TCP + TLS锛堟牎楠岃瘉涔︼級</option></select></label>
+<label>鏁版嵁鏍煎紡<select id="log-format"><option value="json">JSON</option><option value="syslog">Syslog锛圧FC 5424锛孞SON 鍐呭锛?/option><option value="custom">鑷畾涔夋ā鏉?/option></select></label>
+<label id="log-facility-field" hidden>Syslog Facility锛?锝?3锛?6 涓?local0锛?input id="log-facility" type="number" min="0" max="23" value="16"></label>
 </div>
-<div id="log-template-field" hidden><label>自定义格式模板<textarea id="log-template" rows="4" maxlength="8192"></textarea></label>
-<p>字段：{id}、{created_at}、{request_id}、{ip}、{method}、{path}、{action}、{rule_id}、{status}、{hostname}、{platform_name}。用 {{ 和 }} 表示字面花括号。每条日志为一行，字段中的换行将转义。</p></div>
-<p>TCP/TLS 使用换行分帧；TLS 使用系统信任链，证书须包含接收 IP。UDP 发送成功不代表送达。TCP/TLS 失败后重试，可能重复，接收端可按 hostname 和 id 去重。</p>
-<div class="toolbar"><button type="submit">保存日志配置</button><button id="test-logging" type="button">发送测试日志</button><button id="refresh-logging" type="button">刷新状态</button></div>
+<div id="log-template-field" hidden><label>鑷畾涔夋牸寮忔ā鏉?textarea id="log-template" rows="4" maxlength="8192"></textarea></label>
+<p>瀛楁锛歿id}銆亄created_at}銆亄request_id}銆亄ip}銆亄method}銆亄path}銆亄action}銆亄rule_id}銆亄status}銆亄hostname}銆亄platform_name}銆傜敤 {{ 鍜?}} 琛ㄧず瀛楅潰鑺辨嫭鍙枫€傛瘡鏉℃棩蹇椾负涓€琛岋紝瀛楁涓殑鎹㈣灏嗚浆涔夈€?/p></div>
+<p>TCP/TLS 浣跨敤鎹㈣鍒嗗抚锛汿LS 浣跨敤绯荤粺淇′换閾撅紝璇佷功椤诲寘鍚帴鏀?IP銆俇DP 鍙戦€佹垚鍔熶笉浠ｈ〃閫佽揪銆俆CP/TLS 澶辫触鍚庨噸璇曪紝鍙兘閲嶅锛屾帴鏀剁鍙寜 hostname 鍜?id 鍘婚噸銆?/p>
+<div class="toolbar"><button type="submit">淇濆瓨鏃ュ織閰嶇疆</button><button id="test-logging" type="button">鍙戦€佹祴璇曟棩蹇?/button><button id="refresh-logging" type="button">鍒锋柊鐘舵€?/button></div>
 <p id="logging-status" role="status"></p><pre id="logging-preview"></pre>
 </form>
 </div>
 <div id="sheet-network" class="system-sheet" role="tabpanel" aria-labelledby="tab-network" hidden>
 <form id="system-form" class="panel">
-<h2>部署模式与逻辑网卡</h2>
-<p class="muted">系统功能引用逻辑别名；更换硬件后重新绑定物理网卡即可保留别名及用途。保存配置不会修改主机 IP。Docker 部署会自动切换数据平面；变更会短暂拆除串联桥接，请在维护窗口操作。</p>
+<h2>閮ㄧ讲妯″紡涓庨€昏緫缃戝崱</h2>
+<p class="muted">绯荤粺鍔熻兘寮曠敤閫昏緫鍒悕锛涙洿鎹㈢‖浠跺悗閲嶆柊缁戝畾鐗╃悊缃戝崱鍗冲彲淇濈暀鍒悕鍙婄敤閫斻€備繚瀛橀厤缃笉浼氫慨鏀逛富鏈?IP銆侱ocker 閮ㄧ讲浼氳嚜鍔ㄥ垏鎹㈡暟鎹钩闈紱鍙樻洿浼氱煭鏆傛媶闄や覆鑱旀ˉ鎺ワ紝璇峰湪缁存姢绐楀彛鎿嶄綔銆?/p>
 <div class="form-grid">
-<label>部署模式<select id="deployment_mode">
-<option value="proxy">反向代理（现有 HTTP 入口）</option>
-<option value="bypass">旁挂 · 交换机镜像审计</option>
-<option value="inline">串联 · 双业务网卡透明桥接</option>
+<label>閮ㄧ讲妯″紡<select id="deployment_mode">
+<option value="proxy">鍙嶅悜浠ｇ悊锛堢幇鏈?HTTP 鍏ュ彛锛?/option>
+<option value="bypass">鏃佹寕 路 浜ゆ崲鏈洪暅鍍忓璁?/option>
+<option value="inline">涓茶仈 路 鍙屼笟鍔＄綉鍗￠€忔槑妗ユ帴</option>
 </select>
 </label>
-<label>逻辑网卡数量（含 1 个管理口）<input id="nic_count" type="number" min="1" max="32" required>
+<label>閫昏緫缃戝崱鏁伴噺锛堝惈 1 涓鐞嗗彛锛?input id="nic_count" type="number" min="1" max="32" required>
 </label>
-<label>管理网卡 IPv4 / 前缀<input id="management_cidr" value="192.168.1.1/24" required placeholder="192.168.1.1/24">
+<label>绠＄悊缃戝崱 IPv4 / 鍓嶇紑<input id="management_cidr" value="192.168.1.1/24" required placeholder="192.168.1.1/24">
 </label>
 </div>
 <div class="toolbar">
-<p>分配一个管理口，其余网卡可作为业务口使用。</p>
-<button id="resize-nics" class="secondary" type="button">更新网卡数量</button>
+<p>鍒嗛厤涓€涓鐞嗗彛锛屽叾浣欑綉鍗″彲浣滀负涓氬姟鍙ｄ娇鐢ㄣ€?/p>
+<button id="resize-nics" class="secondary" type="button">鏇存柊缃戝崱鏁伴噺</button>
 </div>
 <div class="table-wrap">
 <table>
 <thead>
 <tr>
-<th>系统网卡别名</th>
-<th>网卡用途</th>
-<th>绑定物理网卡</th>
+<th>绯荤粺缃戝崱鍒悕</th>
+<th>缃戝崱鐢ㄩ€?/th>
+<th>缁戝畾鐗╃悊缃戝崱</th>
 </tr>
 </thead>
 <tbody id="nic-list">
@@ -407,58 +424,59 @@ docker compose up -d --no-build --pull never waf</pre></details>
 </table>
 </div>
 <div class="form-grid">
-<label>旁挂镜像口<select id="mirror_alias">
+<label>鏃佹寕闀滃儚鍙?select id="mirror_alias">
 </select>
 </label>
-<label>串联入口<select id="ingress_alias">
+<label>涓茶仈鍏ュ彛<select id="ingress_alias">
 </select>
 </label>
-<label>串联出口<select id="egress_alias">
+<label>涓茶仈鍑哄彛<select id="egress_alias">
 </select>
 </label>
 </div>
-<p class="muted">旁挂仅检测镜像流量，不发送阻断。串联由 Linux 数据平面接管两个专用业务口。管理网卡不参与桥接。</p>
-<button type="submit">保存网卡配置</button>
+<p class="muted">鏃佹寕浠呮娴嬮暅鍍忔祦閲忥紝涓嶅彂閫侀樆鏂€備覆鑱旂敱 Linux 鏁版嵁骞抽潰鎺ョ涓や釜涓撶敤涓氬姟鍙ｃ€傜鐞嗙綉鍗′笉鍙備笌妗ユ帴銆?/p>
+<button type="submit">淇濆瓨缃戝崱閰嶇疆</button>
 </form>
 </div>
 <div id="sheet-status" class="system-sheet" role="tabpanel" aria-labelledby="tab-status" hidden>
 <div class="panel">
 <div class="toolbar">
-<h2>运行状态与管理 IP</h2>
-<button id="refresh-system" type="button" class="secondary">刷新物理网卡</button>
+<h2>杩愯鐘舵€佷笌绠＄悊 IP</h2>
+<button id="refresh-system" type="button" class="secondary">鍒锋柊鐗╃悊缃戝崱</button>
 </div>
 <p id="network-status">
 </p>
 <div id="binding-status">
 </div>
-<p class="muted">“应用管理 IP”会向已保存配置的管理网卡添加地址，不删除现有地址、不更改默认网关。Windows 管理口须使用静态地址；DHCP 网卡会拒绝应用，避免影响现有连接。需要管理员权限。重启 WAF 后增加管理地址监听，本机入口保留。</p>
-<button id="apply-management" type="button">应用已保存的管理 IP</button>
+<p class="muted">鈥滃簲鐢ㄧ鐞?IP鈥濅細鍚戝凡淇濆瓨閰嶇疆鐨勭鐞嗙綉鍗℃坊鍔犲湴鍧€锛屼笉鍒犻櫎鐜版湁鍦板潃銆佷笉鏇存敼榛樿缃戝叧銆俉indows 绠＄悊鍙ｉ』浣跨敤闈欐€佸湴鍧€锛汥HCP 缃戝崱浼氭嫆缁濆簲鐢紝閬垮厤褰卞搷鐜版湁杩炴帴銆傞渶瑕佺鐞嗗憳鏉冮檺銆傞噸鍚?WAF 鍚庡鍔犵鐞嗗湴鍧€鐩戝惉锛屾湰鏈哄叆鍙ｄ繚鐣欍€?/p>
+<button id="apply-management" type="button">搴旂敤宸蹭繚瀛樼殑绠＄悊 IP</button>
 <p id="network-access" class="muted">
 </p>
 </div>
 </div>
 <div id="sheet-guide" class="system-sheet" role="tabpanel" aria-labelledby="tab-guide" hidden>
 <div class="panel">
-<h2>详细使用说明</h2>
-<p>包含首次初始化、接入模式、站点与 HTTPS 证书、系统及自定义规则、访问审计分页、数据库迁移、日志转发、备份更新和常见问题。</p>
-<p><a href="/api/documentation/user-guide">下载 WAF 详细使用与运维说明（Markdown）</a></p>
-<h2>镜像旁挂 / 透明串联部署</h2>
-<p>正式部署使用 Ubuntu + Docker。容器共享宿主机网络，管理 IP、镜像口和透明桥接均作用于 Ubuntu 宿主机网卡。保存旁挂或串联配置后，容器自动启动对应数据平面；未成功启动时不会显示为防护已生效。</p>
-<p>Ubuntu 上在项目目录启动：</p>
+<h2>璇︾粏浣跨敤璇存槑</h2>
+<p>鍖呭惈棣栨鍒濆鍖栥€佹帴鍏ユā寮忋€佺珯鐐逛笌 HTTPS 璇佷功銆佺郴缁熷強鑷畾涔夎鍒欍€佽闂璁″垎椤点€佹暟鎹簱杩佺Щ銆佹棩蹇楄浆鍙戙€佸浠芥洿鏂板拰甯歌闂銆?/p>
+<p><a href="/api/documentation/user-guide">涓嬭浇 WAF 璇︾粏浣跨敤涓庤繍缁磋鏄庯紙Markdown锛?/a></p>
+<h2>闀滃儚鏃佹寕 / 閫忔槑涓茶仈閮ㄧ讲</h2>
+<p>姝ｅ紡閮ㄧ讲浣跨敤 Ubuntu + Docker銆傚鍣ㄥ叡浜涓绘満缃戠粶锛岀鐞?IP銆侀暅鍍忓彛鍜岄€忔槑妗ユ帴鍧囦綔鐢ㄤ簬 Ubuntu 瀹夸富鏈虹綉鍗°€備繚瀛樻梺鎸傛垨涓茶仈閰嶇疆鍚庯紝瀹瑰櫒鑷姩鍚姩瀵瑰簲鏁版嵁骞抽潰锛涙湭鎴愬姛鍚姩鏃朵笉浼氭樉绀轰负闃叉姢宸茬敓鏁堛€?/p>
+<p>Ubuntu 涓婂湪椤圭洰鐩綍鍚姩锛?/p>
 <pre>bash start.sh</pre>
-<p class="muted">管理 IP 应用后执行 docker compose restart waf 更新监听地址。数据平面异常退出时，管理页面继续可用；修正配置并保存或重启容器后重试。Windows 仅用于本地开发，不提供镜像和透明桥接驱动。</p>
-<p class="muted">当前数据平面检测明文 HTTP/1.x（TCP 80、8080）。HTTPS 加密内容、HTTP/2、HTTP/3 不在检测范围，需额外 TLS 解密组件。串联支持软件桥接，停止后桥接拆除，不能代替硬件断电旁路。详细安装和接线说明见 README。</p>
+<p class="muted">绠＄悊 IP 搴旂敤鍚庢墽琛?docker compose restart waf 鏇存柊鐩戝惉鍦板潃銆傛暟鎹钩闈㈠紓甯搁€€鍑烘椂锛岀鐞嗛〉闈㈢户缁彲鐢紱淇閰嶇疆骞朵繚瀛樻垨閲嶅惎瀹瑰櫒鍚庨噸璇曘€俉indows 浠呯敤浜庢湰鍦板紑鍙戯紝涓嶆彁渚涢暅鍍忓拰閫忔槑妗ユ帴椹卞姩銆?/p>
+<p class="muted">褰撳墠鏁版嵁骞抽潰妫€娴嬫槑鏂?HTTP/1.x锛圱CP 80銆?080锛夈€侶TTPS 鍔犲瘑鍐呭銆丠TTP/2銆丠TTP/3 涓嶅湪妫€娴嬭寖鍥达紝闇€棰濆 TLS 瑙ｅ瘑缁勪欢銆備覆鑱旀敮鎸佽蒋浠舵ˉ鎺ワ紝鍋滄鍚庢ˉ鎺ユ媶闄わ紝涓嶈兘浠ｆ浛纭欢鏂數鏃佽矾銆傝缁嗗畨瑁呭拰鎺ョ嚎璇存槑瑙?README銆?/p>
 </div>
 </div>
 </section>
-<footer><span id="platform-footer">WAF</span> · Python / FastAPI · 基础防护版本<span class="release-notice">v0.261115 · 版权归本人所有。</span></footer>
+<footer><span id="platform-footer">WAF</span> 路 Python / FastAPI 路 鍩虹闃叉姢鐗堟湰<span class="release-notice">v0.261115 路 鐗堟潈褰掓湰浜烘墍鏈夈€?/span></footer>
 </main>
 <dialog id="traffic-map-dialog" aria-labelledby="traffic-map-title">
-<div class="traffic-map-header"><div><small>QIONGHAI · NETWORK VISUALIZATION</small><h2 id="traffic-map-title">公网访问连接图 · 大屏展示</h2></div><div class="traffic-map-actions"><label>统计范围<select id="map-period"><option value="all">全部留存记录</option><option value="24h">最近 24 小时</option><option value="7d">最近 7 天</option><option value="30d">最近 30 天</option></select></label><label>IP 数量<select id="map-limit"><option>50</option><option selected>150</option><option>300</option></select></label><label class="map-auto"><input id="map-auto" type="checkbox" checked>自动刷新</label><button id="map-fullscreen" type="button" hidden>进入浏览器全屏</button><button id="map-refresh" type="button">刷新</button><button id="map-close" type="button" aria-label="退出大屏展示">×</button></div></div>
-<p id="map-fullscreen-hint" role="status" hidden>浏览器未允许自动全屏。请点击“进入浏览器全屏”重试，或按 F11 隐藏浏览器标签栏、地址栏和工具栏。</p>
+<div class="traffic-map-header"><div><small>QIONGHAI 路 NETWORK VISUALIZATION</small><h2 id="traffic-map-title">鍏綉璁块棶杩炴帴鍥?路 澶у睆灞曠ず</h2></div><div class="traffic-map-actions"><label>缁熻鑼冨洿<select id="map-period"><option value="all">鍏ㄩ儴鐣欏瓨璁板綍</option><option value="24h">鏈€杩?24 灏忔椂</option><option value="7d">鏈€杩?7 澶?/option><option value="30d">鏈€杩?30 澶?/option></select></label><label>IP 鏁伴噺<select id="map-limit"><option>50</option><option selected>150</option><option>300</option></select></label><label class="map-auto"><input id="map-auto" type="checkbox" checked>鑷姩鍒锋柊</label><button id="map-fullscreen" type="button" hidden>杩涘叆娴忚鍣ㄥ叏灞?/button><button id="map-refresh" type="button">鍒锋柊</button><button id="map-close" type="button" aria-label="閫€鍑哄ぇ灞忓睍绀?>脳</button></div></div>
+<p id="map-fullscreen-hint" role="status" hidden>娴忚鍣ㄦ湭鍏佽鑷姩鍏ㄥ睆銆傝鐐瑰嚮鈥滆繘鍏ユ祻瑙堝櫒鍏ㄥ睆鈥濋噸璇曪紝鎴栨寜 F11 闅愯棌娴忚鍣ㄦ爣绛炬爮銆佸湴鍧€鏍忓拰宸ュ叿鏍忋€?/p>
 <div id="map-metrics" class="map-metrics"></div>
-<div class="traffic-map-body"><div id="map-stage"><canvas id="traffic-map-canvas" tabindex="0" aria-label="公网 IP 国家级近似定位与 WAF 逻辑入口的请求连接图；也可使用右侧 IP 列表选择来源"></canvas><div class="map-navigation"><button id="map-zoom-in" type="button" aria-label="放大地图">＋</button><button id="map-zoom-out" type="button" aria-label="缩小地图">－</button><button id="map-reset" type="button">复位</button></div><div class="map-legend"><span class="blocked">● 拦截</span><span class="detected">● 观察命中</span><span class="allowed">● 正常 / 已审计</span><span class="error">● 代理异常</span><small>线越粗，请求越多 · 滚轮缩放，拖动平移</small></div><div id="map-tooltip" role="status" hidden></div><p id="map-status" role="status"></p></div><div class="map-sidebar"><h3>来源详情</h3><div id="map-detail">点击地图节点或下方 IP 查看统计。</div><h3>公网来源 <small>按请求量排序</small></h3><div id="map-source-list"></div><h3>访问域名 TOP5</h3><div id="map-domain-list"></div></div></div>
-<div class="map-footer"><span id="map-updated">等待数据</span><span>IP 为国家级近似定位，同国家节点分散排布；WAF 为逻辑汇聚点。连线按审计请求次数展示，不代表字节流量或当前活跃 TCP 连接。</span><small>离线底图：Natural Earth（公共领域） · IP：DB-IP Lite · 国家坐标：Google DSPL（BSD-3-Clause）</small></div>
+<div class="traffic-map-body"><div id="map-stage"><canvas id="traffic-map-canvas" tabindex="0" aria-label="鍏綉 IP 鍥藉绾ц繎浼煎畾浣嶄笌 WAF 閫昏緫鍏ュ彛鐨勮姹傝繛鎺ュ浘锛涗篃鍙娇鐢ㄥ彸渚?IP 鍒楄〃閫夋嫨鏉ユ簮"></canvas><div class="map-navigation"><button id="map-zoom-in" type="button" aria-label="鏀惧ぇ鍦板浘">锛?/button><button id="map-zoom-out" type="button" aria-label="缂╁皬鍦板浘">锛?/button><button id="map-reset" type="button">澶嶄綅</button></div><div class="map-legend"><span class="blocked">鈼?鎷︽埅</span><span class="detected">鈼?瑙傚療鍛戒腑</span><span class="allowed">鈼?姝ｅ父 / 宸插璁?/span><span class="error">鈼?浠ｇ悊寮傚父</span><small>绾胯秺绮楋紝璇锋眰瓒婂 路 婊氳疆缂╂斁锛屾嫋鍔ㄥ钩绉?/small></div><div id="map-tooltip" role="status" hidden></div><p id="map-status" role="status"></p></div><div class="map-sidebar"><h3>鏉ユ簮璇︽儏</h3><div id="map-detail">鐐瑰嚮鍦板浘鑺傜偣鎴栦笅鏂?IP 鏌ョ湅缁熻銆?/div><h3>鍏綉鏉ユ簮 <small>鎸夎姹傞噺鎺掑簭</small></h3><div id="map-source-list"></div><h3>璁块棶鍩熷悕 TOP5</h3><div id="map-domain-list"></div></div></div>
+<div class="map-footer"><span id="map-updated">绛夊緟鏁版嵁</span><span>IP 涓哄浗瀹剁骇杩戜技瀹氫綅锛屽悓鍥藉鑺傜偣鍒嗘暎鎺掑竷锛沇AF 涓洪€昏緫姹囪仛鐐广€傝繛绾挎寜瀹¤璇锋眰娆℃暟灞曠ず锛屼笉浠ｈ〃瀛楄妭娴侀噺鎴栧綋鍓嶆椿璺?TCP 杩炴帴銆?/span><small>绂荤嚎搴曞浘锛歂atural Earth锛堝叕鍏遍鍩燂級 路 IP锛欴B-IP Lite 路 鍥藉鍧愭爣锛欸oogle DSPL锛圔SD-3-Clause锛?/small></div>
 </dialog>
 </body>
 </html>
+

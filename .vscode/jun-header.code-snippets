@@ -1,0 +1,132 @@
+{
+  "JUN 文件头 python": {
+    "scope": "python,powershell,shellscript,dockerfile,cmake,yaml,toml",
+    "prefix": "junheader",
+    "isFileTemplate": true,
+    "body": [
+      "# ============================================================",
+      "# 文件名称：${TM_FILENAME}",
+      "# 生成日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "# 修改日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "# 版本信息：v0.261115",
+      "# 作    者：JUN",
+      "# 备    注：本程序由AI辅助完成。",
+      "#           文件功能：${1:说明本文件实现的主要功能}。",
+      "#           文件用途：${2:说明使用场景及调用方式}。",
+      "#           注意事项：${3:说明运行条件、依赖及配置要求}。",
+      "# ============================================================",
+      "",
+      "$0"
+    ],
+    "description": "JUN 文件头：文件名、日期、版本、AI 备注、功能用途及注意事项"
+  },
+  "JUN 文件头 javascript": {
+    "scope": "javascript,javascriptreact,typescript,typescriptreact,c,cpp,java,csharp,go,rust",
+    "prefix": "junheader",
+    "isFileTemplate": true,
+    "body": [
+      "// ============================================================",
+      "// 文件名称：${TM_FILENAME}",
+      "// 生成日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "// 修改日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "// 版本信息：v0.261115",
+      "// 作    者：JUN",
+      "// 备    注：本程序由AI辅助完成。",
+      "//           文件功能：${1:说明本文件实现的主要功能}。",
+      "//           文件用途：${2:说明使用场景及调用方式}。",
+      "//           注意事项：${3:说明运行条件、依赖及配置要求}。",
+      "// ============================================================",
+      "",
+      "$0"
+    ],
+    "description": "JUN 文件头：文件名、日期、版本、AI 备注、功能用途及注意事项"
+  },
+  "JUN 文件头 html": {
+    "scope": "html,xml",
+    "prefix": "junheader",
+    "isFileTemplate": true,
+    "body": [
+      "<!--",
+      "============================================================",
+      "文件名称：${TM_FILENAME}",
+      "生成日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "修改日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "版本信息：v0.261115",
+      "作    者：JUN",
+      "备    注：本程序由AI辅助完成。",
+      "          文件功能：${1:说明本文件实现的主要功能}。",
+      "          文件用途：${2:说明使用场景及调用方式}。",
+      "          注意事项：${3:说明运行条件、依赖及配置要求}。",
+      "============================================================",
+      "-->",
+      "",
+      "$0"
+    ],
+    "description": "JUN 文件头：文件名、日期、版本、AI 备注、功能用途及注意事项"
+  },
+  "JUN 文件头 css": {
+    "scope": "css,scss,less",
+    "prefix": "junheader",
+    "isFileTemplate": true,
+    "body": [
+      "/*",
+      "============================================================",
+      "文件名称：${TM_FILENAME}",
+      "生成日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "修改日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "版本信息：v0.261115",
+      "作    者：JUN",
+      "备    注：本程序由AI辅助完成。",
+      "          文件功能：${1:说明本文件实现的主要功能}。",
+      "          文件用途：${2:说明使用场景及调用方式}。",
+      "          注意事项：${3:说明运行条件、依赖及配置要求}。",
+      "============================================================",
+      "*/",
+      "",
+      "$0"
+    ],
+    "description": "JUN 文件头：文件名、日期、版本、AI 备注、功能用途及注意事项"
+  },
+  "JUN 文件头 sql": {
+    "scope": "sql",
+    "prefix": "junheader",
+    "isFileTemplate": true,
+    "body": [
+      "-- ============================================================",
+      "-- 文件名称：${TM_FILENAME}",
+      "-- 生成日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "-- 修改日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "-- 版本信息：v0.261115",
+      "-- 作    者：JUN",
+      "-- 备    注：本程序由AI辅助完成。",
+      "--           文件功能：${1:说明本文件实现的主要功能}。",
+      "--           文件用途：${2:说明使用场景及调用方式}。",
+      "--           注意事项：${3:说明运行条件、依赖及配置要求}。",
+      "-- ============================================================",
+      "",
+      "$0"
+    ],
+    "description": "JUN 文件头：文件名、日期、版本、AI 备注、功能用途及注意事项"
+  },
+  "JUN 文件头 bat": {
+    "scope": "bat",
+    "prefix": "junheader",
+    "isFileTemplate": true,
+    "body": [
+      "REM ============================================================",
+      "REM 文件名称：${TM_FILENAME}",
+      "REM 生成日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "REM 修改日期：${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "REM 版本信息：v0.261115",
+      "REM 作    者：JUN",
+      "REM 备    注：本程序由AI辅助完成。",
+      "REM           文件功能：${1:说明本文件实现的主要功能}。",
+      "REM           文件用途：${2:说明使用场景及调用方式}。",
+      "REM           注意事项：${3:说明运行条件、依赖及配置要求}。",
+      "REM ============================================================",
+      "",
+      "$0"
+    ],
+    "description": "JUN 文件头：文件名、日期、版本、AI 备注、功能用途及注意事项"
+  }
+}

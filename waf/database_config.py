@@ -1,3 +1,14 @@
+# ============================================================
+# 文件名称：database_config.py
+# 生成日期：2026-10-27
+# 修改日期：2026-11-20
+# 版本信息：v0.261115
+# 作    者：JUN
+# 备    注：本程序由AI辅助完成。
+#           文件功能：实现 database_config 模块相关功能。
+#           文件用途：供WAF的 yuhan/waf/database_config.py 模块使用。
+#           注意事项：运行前检查依赖与配置；涉及数据或服务变更时先备份并验证。
+# ============================================================
 """Validate and stage database changes; activation requires offline migration."""
 import os
 from pathlib import Path
@@ -13,7 +24,7 @@ from .database import ROOT, config_path, database_target
 
 class DatabaseConfig(BaseModel):
     model_config = ConfigDict(extra='forbid')
-    engine: Literal['sqlite','postgresql'] = 'sqlite'
+    engine: Literal['sqlite','postgresql','mysql'] = 'sqlite'
     sqlite_path: str = Field(default='runtime/waf.sqlite3', min_length=1, max_length=500)
     host: str = Field(default='', max_length=253, pattern=r'^[a-zA-Z0-9.:-]*$')
     port: int = Field(default=5432, ge=1, le=65535)
@@ -47,30 +58,30 @@ def public_config(value):
 
 
 def resolved(value):
-    if value.engine == 'postgresql':
+    if value.engine in ('postgresql','mysql'):
         if os.getenv('WAF_DEV_MODE') == '1':
             from psycopg.conninfo import conninfo_to_dict
             target = database_target()
             if not isinstance(target, str):
-                raise ValueError('开发模式不能从 SQLite 切换至外部数据库')
+                raise ValueError('寮€鍙戞ā寮忎笉鑳戒粠 SQLite 鍒囨崲鑷冲閮ㄦ暟鎹簱')
             identity = conninfo_to_dict(target)
             if (value.host,str(value.port),value.name,value.user) != (identity['host'],identity['port'],identity['dbname'],identity['user']):
-                raise ValueError('开发模式仅允许当前独立开发数据库，不能切换生产数据库')
-        if not value.host or not value.name or not value.user: raise ValueError('请填写 PostgreSQL 主机、数据库名和用户名')
+                raise ValueError('寮€鍙戞ā寮忎粎鍏佽褰撳墠鐙珛寮€鍙戞暟鎹簱锛屼笉鑳藉垏鎹㈢敓浜ф暟鎹簱')
+        if not value.host or not value.name or not value.user: raise ValueError('请填写数据库主机、数据库名和用户名')
         if not value.password.get_secret_value():
             candidates = [read_config()]
-            if profile_path('postgresql').exists(): candidates.insert(0,read_config(profile_path('postgresql')))
+            if profile_path(value.engine).exists(): candidates.insert(0,read_config(profile_path(value.engine)))
             if pending_path().exists(): candidates.insert(0,read_config(pending_path()))
             for old in candidates:
                 if (old.host,old.port,old.name,old.user) == (value.host,value.port,value.name,value.user) and old.password.get_secret_value():
                     value = value.model_copy(update={'password':old.password})
                     break
-        if not value.password.get_secret_value(): raise ValueError('请填写 PostgreSQL 密码')
+        if not value.password.get_secret_value(): raise ValueError('璇峰～鍐?PostgreSQL 瀵嗙爜')
     else:
         path = (ROOT/value.sqlite_path).resolve()
         allowed = (ROOT/('runtime/dev' if os.getenv('WAF_DEV_MODE') == '1' else 'runtime')).resolve()
         if not path.is_relative_to(allowed) or path.suffix != '.sqlite3':
-            raise ValueError('SQLite 文件必须位于本系统 runtime 目录内，扩展名为 .sqlite3')
+            raise ValueError('SQLite 鏂囦欢蹇呴』浣嶄簬鏈郴缁?runtime 鐩綍鍐咃紝鎵╁睍鍚嶄负 .sqlite3')
         value = value.model_copy(update={'sqlite_path':str(path)})
     return value
 
@@ -84,7 +95,7 @@ def values_for(value):
 def probe(value):
     value = resolved(value)
     start = time.perf_counter()
-    if value.engine == 'postgresql':
+    if value.engine in ('postgresql','mysql'):
         import psycopg
         with psycopg.connect(database_target(values_for(value))) as db:
             db.execute("SELECT set_config('statement_timeout','10000',true)")
@@ -103,7 +114,7 @@ def probe(value):
             assert db.execute('SELECT id FROM waf_config_probe').fetchone()[0] == 1
             db.rollback()
         finally: db.close()
-    return {'ok':True,'detail':'所选数据库连接及读写测试通过','elapsed_ms':round((time.perf_counter()-start)*1000,2)}
+    return {'ok':True,'detail':'鎵€閫夋暟鎹簱杩炴帴鍙婅鍐欐祴璇曢€氳繃','elapsed_ms':round((time.perf_counter()-start)*1000,2)}
 
 
 def stage(value):
@@ -136,7 +147,7 @@ def initialize_database(value):
     with target.connect() as db:
         tables = {table: db.execute(f'SELECT count(*) FROM {table}').fetchone()[0] for table in TABLES}
     return {'ok':True,'engine':target.engine,'tables':tables,
-            'detail':'数据初始化完成：WAF 表结构及默认防护配置已就绪，已有配置和审计记录已保留。初始化不会切换当前数据库。'}
+            'detail':'WAF database initialized'}
 
 
 def configuration_status(store):
@@ -152,15 +163,17 @@ def configuration_status(store):
         active = DatabaseConfig(engine='sqlite',sqlite_path=store.path)
     selected = read_config(pending_path()) if pending else active
     profiles = {}
-    for engine in ('sqlite','postgresql'):
+    for engine in ('sqlite','postgresql','mysql'):
         path = profile_path(engine)
         if path.exists(): profiles[engine] = public_config(read_config(path))
     configured = read_config()
-    if configured.engine == 'postgresql' and configured.host and configured.name and configured.user:
-        profiles['postgresql'] = public_config(configured)
+    if configured.engine in ('postgresql','mysql') and configured.host and configured.name and configured.user:
+        profiles[configured.engine] = public_config(configured)
     profiles[active.engine] = public_config(active)
     profiles[selected.engine] = public_config(selected)
     return {'active_engine':store.engine,'active':public_config(active),
             'selected':public_config(selected),'profiles':profiles,
             'environment':'development' if os.getenv('WAF_DEV_MODE') == '1' else 'service',
             'pending':pending}
+
+

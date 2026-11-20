@@ -1,3 +1,14 @@
+# ============================================================
+# 文件名称：database.py
+# 生成日期：2026-10-27
+# 修改日期：2026-11-20
+# 版本信息：v0.261115
+# 作    者：JUN
+# 备    注：本程序由AI辅助完成。
+#           文件功能：管理数据库连接及数据访问。
+#           文件用途：供WAF的 yuhan/waf/database.py 模块使用。
+#           注意事项：运行前检查依赖与配置；涉及数据或服务变更时先备份并验证。
+# ============================================================
 """Resolve the active storage backend without exposing connection passwords."""
 import os
 from pathlib import Path
@@ -14,7 +25,10 @@ def config_path():
 def database_target(values=None):
     values = {**os.environ, **dotenv_values(config_path())} if values is None else values
     engine = values.get('WAF_DB_ENGINE', 'sqlite')
-    if engine == 'postgresql':
+    if engine in ('postgresql','mysql'):
+        if engine == 'mysql':
+            from urllib.parse import quote
+            return f"mysql+pymysql://{quote(values.get('WAF_DB_USER',''))}:{quote(values.get('WAF_DB_PASSWORD',''))}@{values.get('WAF_DB_HOST','')}:{values.get('WAF_DB_PORT','3306')}/{values.get('WAF_DB_NAME','')}"
         from psycopg.conninfo import make_conninfo
         return make_conninfo(host=values.get('WAF_DB_HOST', ''),
             port=values.get('WAF_DB_PORT', '5432'), dbname=values.get('WAF_DB_NAME', ''),
@@ -52,3 +66,14 @@ class PostgresConnection:
 
     def rollback(self):
         self.raw.rollback()
+
+class MySQLConnection:
+    def __init__(self, url):
+        import pymysql
+        from urllib.parse import urlsplit, unquote
+        p=urlsplit(url); self.raw=pymysql.connect(host=p.hostname, port=p.port or 3306, user=unquote(p.username or ''), password=unquote(p.password or ''), database=(p.path or '/')[1:], autocommit=False, cursorclass=pymysql.cursors.DictCursor)
+    def execute(self, query, params=None):
+        query=query.replace('BEGIN IMMEDIATE','START TRANSACTION').replace('INSERT OR IGNORE INTO','INSERT IGNORE INTO').replace('?', '%s')
+        if ' ON CONFLICT' in query: query=query.split(' ON CONFLICT',1)[0]
+        cur=self.raw.cursor(); cur.execute(query, params or ()); return cur
+    def rollback(self): self.raw.rollback()
