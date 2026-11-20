@@ -1,3 +1,14 @@
+# ============================================================
+# 文件名称：store.py
+# 生成日期：2026-10-27
+# 修改日期：2026-11-20
+# 版本信息：v0.261115
+# 作    者：JUN
+# 备    注：本程序由AI辅助完成。
+#           文件功能：封装平台数据存取操作。
+#           文件用途：供WAF的 yuhan/waf/store.py 模块使用。
+#           注意事项：运行前检查依赖与配置；涉及数据或服务变更时先备份并验证。
+# ============================================================
 import json
 import sqlite3
 from contextlib import contextmanager
@@ -15,12 +26,12 @@ class Store:
             from .database import database_target
             path = database_target()
         self.path = str(path)
-        self.engine = 'postgresql' if self.path.startswith(('postgresql://', 'postgres://')) or ('dbname=' in self.path and 'host=' in self.path) else 'sqlite'
+        self.engine = 'mysql' if self.path.startswith(('mysql://','mysql+pymysql://')) else ('postgresql' if self.path.startswith(('postgresql://', 'postgres://')) or ('dbname=' in self.path and 'host=' in self.path) else 'sqlite')
         self.initialized = False
         if self.engine == 'sqlite': Path(self.path).parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as db:
             if self.engine == 'sqlite': db.execute('PRAGMA journal_mode=WAL')
-            else: db.execute('SELECT pg_advisory_xact_lock(830016)')
+            elif self.engine == 'postgresql': db.execute('SELECT pg_advisory_xact_lock(830016)')
             schema = '''
                 CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY CHECK(id=1), value TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS system_settings (id INTEGER PRIMARY KEY CHECK(id=1), value TEXT NOT NULL);
@@ -41,6 +52,7 @@ class Store:
                 schema = schema.replace('id INTEGER PRIMARY KEY, created_at', 'id BIGSERIAL PRIMARY KEY, created_at')
                 for statement in schema.split(';'):
                     if statement.strip(): db.execute(statement)
+            elif self.engine == 'mysql': db.executescript(schema)
             else: db.executescript(schema)
             if self.engine=='sqlite':db.execute('BEGIN IMMEDIATE')
             columns={row[1] for row in db.execute('PRAGMA table_info(events)')} if self.engine=='sqlite' else {row[0] for row in db.execute("SELECT column_name FROM information_schema.columns WHERE table_schema=current_schema() AND table_name='events'")}
@@ -224,3 +236,4 @@ class Store:
                 'detected': counts.get('detected', 0), 'allowed': counts.get('allowed', 0),
                 'observed': counts.get('observed', 0),
                 'errors': counts.get('error', 0)}
+
