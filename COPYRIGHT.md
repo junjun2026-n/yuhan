@@ -2,7 +2,7 @@
 
 版本：v0.261115
 
-版权归本人所有。
+请遵守版权协议。
 
 本项目自有代码按 GNU General Public License version 3 only（SPDX-License-Identifier: GPL-3.0-only）授权。你可以依照 GPLv3 使用、研究、修改和再分发；分发本程序或其修改版本时，应保留版权及许可声明、提供对应源代码，并遵守 GPLv3 的相关要求。完整条款见 LICENSE。
 
